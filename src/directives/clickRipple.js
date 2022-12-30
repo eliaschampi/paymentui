@@ -63,5 +63,5 @@ export default {
   },
   unmounted: (el) => {
     el.removeEventListener("click", el.clickRipple);
-  },
+  }
 };

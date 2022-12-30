@@ -11,44 +11,44 @@ const route = useRoute();
 const props = defineProps({
   nodes: {
     type: Array,
-    description: "The nodes of the navigation",
+    description: "The nodes of the navigation"
   },
   subMenu: {
     type: Boolean,
     default: false,
-    description: "If true, a submenu will be rendered",
+    description: "If true, a submenu will be rendered"
   },
   dark: {
     type: Boolean,
     default: false,
-    description: "Dark mode for menu",
+    description: "Dark mode for menu"
   },
   horizontal: {
     type: Boolean,
     default: false,
-    description: "Horizontal menu in large screen width",
+    description: "Horizontal menu in large screen width"
   },
   horizontalHover: {
     type: Boolean,
     default: false,
-    description: "Hover mode for horizontal menu",
+    description: "Hover mode for horizontal menu"
   },
   horizontalCenter: {
     type: Boolean,
     default: false,
-    description: "Center mode for horizontal menu",
+    description: "Center mode for horizontal menu"
   },
   horizontalJustify: {
     type: Boolean,
     default: false,
-    description: "Justify mode for horizontal menu",
+    description: "Justify mode for horizontal menu"
   },
   disableClick: {
     type: Boolean,
     default: false,
     description:
-      "Disables submenu click on 2+ level when we are in horizontal and hover mode",
-  },
+      "Disables submenu click on 2+ level when we are in horizontal and hover mode"
+  }
 });
 
 // Set CSS classes accordingly
@@ -60,7 +60,7 @@ const classContainer = computed(() => {
     "nav-main-horizontal": props.horizontal,
     "nav-main-hover": props.horizontalHover,
     "nav-main-horizontal-center": props.horizontalCenter,
-    "nav-main-horizontal-justify": props.horizontalJustify,
+    "nav-main-horizontal-justify": props.horizontalJustify
   };
 });
 
@@ -118,20 +118,29 @@ function linkClicked(e, submenu) {
         open:
           node.sub && node.subActivePaths
             ? subIsActive(node.subActivePaths)
-            : false,
+            : false
       }"
     >
       <!-- Heading -->
       {{ node.heading ? node.name : "" }}
       <!-- Normal Link -->
-      <div v-if="!node.heading && !node.sub" @click="linkClicked($event)">
+      <div
+        v-if="!node.heading && !node.sub"
+        @click="linkClicked($event)"
+      >
         <RouterLink
           :to="node.to && node.to !== '#' ? { name: node.to } : '#'"
           class="nav-main-link"
           :active-class="node.to && node.to !== '#' ? 'active' : ''"
         >
-          <i v-if="node.icon" :class="`nav-main-link-icon ${node.icon}`"></i>
-          <span v-if="node.name" class="nav-main-link-name">
+          <i
+            v-if="node.icon"
+            :class="`nav-main-link-icon ${node.icon}`"
+          />
+          <span
+            v-if="node.name"
+            class="nav-main-link-name"
+          >
             {{ node.name }}
           </span>
           <span
@@ -142,8 +151,7 @@ function linkClicked(e, submenu) {
                 ? `bg-${node['badge-variant']}`
                 : 'bg-primary'
             "
-            >{{ node.badge }}</span
-          >
+          >{{ node.badge }}</span>
         </RouterLink>
       </div>
       <!-- END Normal Link -->
@@ -155,16 +163,21 @@ function linkClicked(e, submenu) {
         class="nav-main-link nav-main-link-submenu"
         @click.prevent="linkClicked($event, true)"
       >
-        <i v-if="node.icon" :class="`nav-main-link-icon ${node.icon}`"></i>
-        <span v-if="node.name" class="nav-main-link-name">{{ node.name }}</span>
+        <i
+          v-if="node.icon"
+          :class="`nav-main-link-icon ${node.icon}`"
+        />
+        <span
+          v-if="node.name"
+          class="nav-main-link-name"
+        >{{ node.name }}</span>
         <span
           v-if="node.badge"
           class="nav-main-link-badge badge rounded-pill"
           :class="
             node['badge-variant'] ? `bg-${node['badge-variant']}` : 'bg-primary'
           "
-          >{{ node.badge }}</span
-        >
+        >{{ node.badge }}</span>
       </a>
       <!-- END Submenu Link -->
 

@@ -23,10 +23,10 @@ const state = reactive({
     updated: true,
     notifications: {
       email: true,
-      sms: true,
+      sms: true
     },
-    api: true,
-  },
+    api: true
+  }
 });
 
 // Close side overlay on ESCAPE key down
@@ -58,20 +58,24 @@ onUnmounted(() => {
       <div class="content-header border-bottom">
         <slot name="header">
           <!-- User Avatar -->
-          <a class="img-link me-1" href="javascript:void(0)">
+          <a
+            class="img-link me-1"
+            href="javascript:void(0)"
+          >
             <img
               class="img-avatar img-avatar32"
               src="/assets/media/images/user.jpg"
               alt="Avatar"
-            />
+            >
           </a>
           <!-- END User Avatar -->
 
           <!-- User Info -->
           <div class="ms-2">
-            <a class="text-dark fw-semibold fs-sm" href="javascript:void(0)"
-              >John Smith</a
-            >
+            <a
+              class="text-dark fw-semibold fs-sm"
+              href="javascript:void(0)"
+            >John Smith</a>
           </div>
           <!-- END User Info -->
         </slot>
@@ -82,7 +86,7 @@ onUnmounted(() => {
           class="ms-auto btn btn-sm btn-alt-danger"
           @click="store.sideOverlay({ mode: 'close' })"
         >
-          <i class="fa fa-fw fa-times"></i>
+          <i class="fa fa-fw fa-times" />
         </button>
         <!-- END Close Side Overlay -->
       </div>
@@ -92,7 +96,11 @@ onUnmounted(() => {
         <!-- Side Content -->
         <div class="content-side">
           <!-- Side Overlay Tabs -->
-          <BaseBlock transparent :rounded="false" class="pull-x pull-t">
+          <BaseBlock
+            transparent
+            :rounded="false"
+            class="pull-x pull-t"
+          >
             <template #content>
               <ul
                 class="nav nav-tabs nav-tabs-block nav-justified"
@@ -100,24 +108,24 @@ onUnmounted(() => {
               >
                 <li class="nav-item">
                   <button
+                    id="so-overview-tab"
                     type="button"
                     class="nav-link active"
-                    id="so-overview-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#so-overview"
                     role="tab"
                     aria-controls="so-overview"
                     aria-selected="true"
                   >
-                    <i class="fa fa-fw fa-coffee text-gray opacity-75 me-1"></i>
+                    <i class="fa fa-fw fa-coffee text-gray opacity-75 me-1" />
                     Overview
                   </button>
                 </li>
                 <li class="nav-item">
                   <button
+                    id="so-sales-tab"
                     type="button"
                     class="nav-link"
-                    id="so-sales-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#so-sales"
                     role="tab"
@@ -126,7 +134,7 @@ onUnmounted(() => {
                   >
                     <i
                       class="fa fa-fw fa-chart-line text-gray opacity-75 me-1"
-                    ></i>
+                    />
                     Sales
                   </button>
                 </li>
@@ -134,8 +142,8 @@ onUnmounted(() => {
               <div class="block-content tab-content overflow-hidden">
                 <!-- Overview Tab -->
                 <div
-                  class="tab-pane pull-x fade fade-left show active"
                   id="so-overview"
+                  class="tab-pane pull-x fade fade-left show active"
                   role="tabpanel"
                   aria-labelledby="so-overview-tab"
                   tabindex="0"
@@ -152,11 +160,14 @@ onUnmounted(() => {
                         v-for="(appEvent, index) in activity"
                         :key="`event-${index}`"
                       >
-                        <a class="text-dark d-flex py-2" :href="appEvent.href">
+                        <a
+                          class="text-dark d-flex py-2"
+                          :href="appEvent.href"
+                        >
                           <div class="flex-shrink-0 me-3 ms-2">
                             <i
                               :class="`${appEvent.icon} text-${appEvent.color}`"
-                            ></i>
+                            />
                           </div>
                           <div class="flex-grow-1 fs-sm">
                             <div class="fw-semibold">{{ appEvent.title }}</div>
@@ -183,7 +194,10 @@ onUnmounted(() => {
                         v-for="(user, index) in users"
                         :key="`userlist-${index}`"
                       >
-                        <a class="d-flex py-2" :href="`${user.href}`">
+                        <a
+                          class="d-flex py-2"
+                          :href="`${user.href}`"
+                        >
                           <div
                             class="me-3 ms-2 overlay-container overlay-bottom"
                           >
@@ -191,10 +205,10 @@ onUnmounted(() => {
                               class="img-avatar img-avatar48"
                               :src="`/assets/media/avatars/${user.avatar}.jpg`"
                               alt="User Photo"
-                            />
+                            >
                             <span
                               :class="`overlay-item item item-tiny item-circle border border-2 border-white bg-${user.statusColor}`"
-                            ></span>
+                            />
                           </div>
                           <div class="flex-grow-1 fs-sm">
                             <div class="fw-semibold">{{ user.name }}</div>
@@ -214,92 +228,95 @@ onUnmounted(() => {
                     btn-option-content
                   >
                     <div class="mb-4">
-                      <p class="fs-sm fw-semibold mb-2">Online Status</p>
+                      <p class="fs-sm fw-semibold mb-2">
+                        Online Status
+                      </p>
                       <div class="form-check form-switch">
                         <input
+                          id="so-settings-check1"
+                          v-model="state.settings.status"
                           class="form-check-input"
                           type="checkbox"
                           value
-                          id="so-settings-check1"
                           name="so-settings-check1"
-                          v-model="state.settings.status"
-                        />
+                        >
                         <label
                           class="form-check-label fs-sm"
                           for="so-settings-check1"
-                          >Show your status to all</label
-                        >
+                        >Show your status to all</label>
                       </div>
                     </div>
                     <div class="mb-4">
-                      <p class="fs-sm fw-semibold mb-2">Auto Updates</p>
+                      <p class="fs-sm fw-semibold mb-2">
+                        Auto Updates
+                      </p>
                       <div class="form-check form-switch">
                         <input
+                          id="so-settings-check2"
+                          v-model="state.settings.updated"
                           class="form-check-input"
                           type="checkbox"
                           value
-                          id="so-settings-check2"
                           name="so-settings-check2"
-                          v-model="state.settings.updated"
-                        />
+                        >
                         <label
                           class="form-check-label fs-sm"
                           for="so-settings-check2"
-                          >Keep up to date</label
-                        >
+                        >Keep up to date</label>
                       </div>
                     </div>
                     <div class="mb-4">
-                      <p class="fs-sm fw-semibold mb-1">Application Alerts</p>
+                      <p class="fs-sm fw-semibold mb-1">
+                        Application Alerts
+                      </p>
                       <div class="space-y-2">
                         <div class="form-check form-switch">
                           <input
+                            id="so-settings-check3"
+                            v-model="state.settings.notifications.email"
                             class="form-check-input"
                             type="checkbox"
                             value
-                            id="so-settings-check3"
                             name="so-settings-check3"
-                            v-model="state.settings.notifications.email"
-                          />
+                          >
                           <label
                             class="form-check-label fs-sm"
                             for="so-settings-check3"
-                            >Email Notifications</label
-                          >
+                          >Email Notifications</label>
                         </div>
                         <div class="form-check form-switch">
                           <input
+                            id="so-settings-check4"
+                            v-model="state.settings.notifications.sms"
                             class="form-check-input"
                             type="checkbox"
                             value
-                            id="so-settings-check4"
                             name="so-settings-check4"
-                            v-model="state.settings.notifications.sms"
-                          />
+                          >
                           <label
                             class="form-check-label fs-sm"
                             for="so-settings-check4"
-                            >SMS Notifications</label
-                          >
+                          >SMS Notifications</label>
                         </div>
                       </div>
                     </div>
                     <div class="mb-4">
-                      <p class="fs-sm fw-semibold mb-1">API</p>
+                      <p class="fs-sm fw-semibold mb-1">
+                        API
+                      </p>
                       <div class="form-check form-switch">
                         <input
+                          id="so-settings-check5"
+                          v-model="state.settings.api"
                           class="form-check-input"
                           type="checkbox"
                           value
-                          id="so-settings-check5"
                           name="so-settings-check5"
-                          v-model="state.settings.api"
-                        />
+                        >
                         <label
                           class="form-check-label fs-sm"
                           for="so-settings-check5"
-                          >Enable access</label
-                        >
+                        >Enable access</label>
                       </div>
                     </div>
                   </BaseBlock>
@@ -309,8 +326,8 @@ onUnmounted(() => {
 
                 <!-- Sales Tab -->
                 <div
-                  class="tab-pane pull-x fade fade-right"
                   id="so-sales"
+                  class="tab-pane pull-x fade fade-right"
                   role="tabpanel"
                   aria-labelledby="so-sales-tab"
                   tabindex="0"
@@ -322,13 +339,19 @@ onUnmounted(() => {
                         <div class="fs-sm fw-semibold text-uppercase">
                           Sales
                         </div>
-                        <a class="fs-lg" href="javascript:void(0)">22.030</a>
+                        <a
+                          class="fs-lg"
+                          href="javascript:void(0)"
+                        >22.030</a>
                       </div>
                       <div class="col-6">
                         <div class="fs-sm fw-semibold text-uppercase">
                           Balance
                         </div>
-                        <a class="fs-lg" href="javascript:void(0)">$4.589,00</a>
+                        <a
+                          class="fs-lg"
+                          href="javascript:void(0)"
+                        >$4.589,00</a>
                       </div>
                     </div>
                   </BaseBlock>
@@ -336,7 +359,10 @@ onUnmounted(() => {
                   <!-- END Stats -->
 
                   <!-- Today -->
-                  <BaseBlock title="Today" header-bg>
+                  <BaseBlock
+                    title="Today"
+                    header-bg
+                  >
                     <template #options>
                       <span class="fs-sm text-muted">$996</span>
                     </template>
@@ -346,9 +372,12 @@ onUnmounted(() => {
                         v-for="(sale, index) in salesToday"
                         :key="`sale-today-${index}`"
                       >
-                        <a class="text-dark d-flex py-2" :href="`${sale.href}`">
+                        <a
+                          class="text-dark d-flex py-2"
+                          :href="`${sale.href}`"
+                        >
                           <div class="flex-shrink-0 me-3 ms-2">
-                            <i :class="`${sale.icon}`"></i>
+                            <i :class="`${sale.icon}`" />
                           </div>
                           <div class="flex-grow-1 fs-sm">
                             <div class="fw-semibold">{{ sale.title }}</div>
@@ -361,7 +390,10 @@ onUnmounted(() => {
                   <!-- END Today -->
 
                   <!-- Yesterday -->
-                  <BaseBlock title="Yesterday" header-bg>
+                  <BaseBlock
+                    title="Yesterday"
+                    header-bg
+                  >
                     <template #options>
                       <span class="fs-sm text-muted">$765</span>
                     </template>
@@ -371,9 +403,12 @@ onUnmounted(() => {
                         v-for="(sale, index) in salesYesterday"
                         :key="`sale-today-${index}`"
                       >
-                        <a class="text-dark d-flex py-2" :href="`${sale.href}`">
+                        <a
+                          class="text-dark d-flex py-2"
+                          :href="`${sale.href}`"
+                        >
                           <div class="flex-shrink-0 me-3 ms-2">
-                            <i :class="`${sale.icon}`"></i>
+                            <i :class="`${sale.icon}`" />
                           </div>
                           <div class="flex-grow-1 fs-sm">
                             <div class="fw-semibold">{{ sale.title }}</div>
@@ -387,7 +422,7 @@ onUnmounted(() => {
                         class="btn btn-sm btn-alt-secondary"
                         href="javascript:void(0)"
                       >
-                        <i class="fa fa-arrow-down opacity-50 me-1"></i> Load
+                        <i class="fa fa-arrow-down opacity-50 me-1" /> Load
                         More..
                       </a>
                     </div>

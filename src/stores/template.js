@@ -8,7 +8,7 @@ export const useTemplateStore = defineStore({
     app: {
       name: "Admin Pagos",
       version: "1",
-      copyright: new Date().getFullYear(),
+      copyright: new Date().getFullYear()
     },
 
     // Default layout options
@@ -16,7 +16,7 @@ export const useTemplateStore = defineStore({
       header: true,
       sidebar: true,
       sideOverlay: true,
-      footer: true,
+      footer: true
     },
 
     // Default template settings
@@ -40,8 +40,8 @@ export const useTemplateStore = defineStore({
       pageLoader: false,
       rtlSupport: false,
       sideTransitions: true,
-      mainContent: "", // 'boxed', ''narrow'
-    },
+      mainContent: "" // 'boxed', ''narrow'
+    }
   }),
   actions: {
     // Sets the layout, useful for setting different layouts (under layouts/variations/)
@@ -243,6 +243,6 @@ export const useTemplateStore = defineStore({
     // Sets side transitions
     setSideTransitions(payload) {
       this.settings.sideTransitions = payload.transitions;
-    },
-  },
+    }
+  }
 });

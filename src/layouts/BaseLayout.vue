@@ -13,8 +13,8 @@ defineProps({
   sidebarWithMiniNav: {
     type: Boolean,
     default: false,
-    description: "If the sidebar is in Mini Nav Mode",
-  },
+    description: "If the sidebar is in Mini Nav Mode"
+  }
 });
 
 // Main store
@@ -22,7 +22,7 @@ const store = useTemplateStore();
 
 // Set default color theme
 store.setColorTheme({
-  theme: store.settings.colorTheme,
+  theme: store.settings.colorTheme
 });
 
 // Render main classes based on store options
@@ -52,7 +52,7 @@ const classContainer = computed(() => {
     "rtl-support": store.settings.rtlSupport,
     "side-trans-enabled": store.settings.sideTransitions,
     "side-scroll": true,
-    "sidebar-dark page-header-dark dark-mode": store.settings.darkMode,
+    "sidebar-dark page-header-dark dark-mode": store.settings.darkMode
   };
 });
 
@@ -97,29 +97,35 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="page-container" :class="classContainer">
+  <div
+    id="page-container"
+    :class="classContainer"
+  >
     <!-- Page Loader -->
-    <div id="page-loader" :class="{ show: store.settings.pageLoader }"></div>
+    <div
+      id="page-loader"
+      :class="{ show: store.settings.pageLoader }"
+    />
 
     <!-- Page Overlay -->
     <div
-      id="page-overlay"
       v-if="store.layout.sideOverlay && store.settings.pageOverlay"
+      id="page-overlay"
       @click="store.sideOverlay({ mode: 'close' })"
-    ></div>
+    />
     <!-- END Page Overlay -->
 
     <!-- Side Overlay -->
     <BaseSideOverlay v-if="store.layout.sideOverlay">
       <template #header>
-        <slot name="side-overlay-header"></slot>
+        <slot name="side-overlay-header" />
       </template>
 
       <template #content>
-        <slot name="side-overlay-content"></slot>
+        <slot name="side-overlay-content" />
       </template>
 
-      <slot name="side-overlay"></slot>
+      <slot name="side-overlay" />
     </BaseSideOverlay>
     <!-- END Side Overlay -->
 
@@ -129,41 +135,41 @@ onMounted(() => {
       :with-mini-nav="sidebarWithMiniNav"
     >
       <template #header>
-        <slot name="sidebar-header"></slot>
+        <slot name="sidebar-header" />
       </template>
 
       <template #header-extra>
-        <slot name="sidebar-header-extra"></slot>
+        <slot name="sidebar-header-extra" />
       </template>
 
       <template #content>
-        <slot name="sidebar-content"></slot>
+        <slot name="sidebar-content" />
       </template>
 
-      <slot name="sidebar"></slot>
+      <slot name="sidebar" />
     </BaseSidebar>
     <!-- END Sidebar -->
 
     <!-- Header -->
     <BaseHeader v-if="store.layout.header">
       <template #content-left>
-        <slot name="header-content-left"></slot>
+        <slot name="header-content-left" />
       </template>
 
       <template #content-right>
-        <slot name="header-content-right"></slot>
+        <slot name="header-content-right" />
       </template>
 
       <template #content>
-        <slot name="header-content"></slot>
+        <slot name="header-content" />
       </template>
-      <slot name="header"></slot>
+      <slot name="header" />
     </BaseHeader>
     <!-- END Header -->
 
     <!-- Main Container -->
     <div id="main-container">
-      <slot name="page-top-content"></slot>
+      <slot name="page-top-content" />
       <RouterView />
     </div>
     <!-- END Main Container -->
@@ -171,13 +177,13 @@ onMounted(() => {
     <!-- Footer -->
     <BaseFooter v-if="store.layout.footer">
       <template #content-left>
-        <slot name="footer-content-left"></slot>
+        <slot name="footer-content-left" />
       </template>
 
       <template #content-right>
-        <slot name="footer-content-right"></slot>
+        <slot name="footer-content-right" />
       </template>
-      <slot name="footer"></slot>
+      <slot name="footer" />
     </BaseFooter>
     <!-- END Footer -->
   </div>

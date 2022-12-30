@@ -25,7 +25,7 @@ store.setLayout({
   header: true,
   sidebar: false,
   sideOverlay: false,
-  footer: true,
+  footer: true
 });
 
 // Set various template options for this layout variation
@@ -53,15 +53,18 @@ store.mainContent({ mode: "boxed" });
         <!-- Notifications Dropdown -->
         <div class="dropdown d-inline-block ms-2">
           <button
+            id="page-header-notifications-dropdown"
             type="button"
             class="btn btn-sm btn-alt-secondary"
-            id="page-header-notifications-dropdown"
             data-bs-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <i class="fa fa-fw fa-bell"></i>
-            <span v-if="notifications.length > 0" class="text-primary">•</span>
+            <i class="fa fa-fw fa-bell" />
+            <span
+              v-if="notifications.length > 0"
+              class="text-primary"
+            >•</span>
           </button>
           <div
             class="dropdown-menu dropdown-menu-lg p-0 border-0 fs-sm"
@@ -70,16 +73,21 @@ store.mainContent({ mode: "boxed" });
             <div
               class="p-2 bg-body-light border-bottom text-center rounded-top"
             >
-              <h5 class="dropdown-header text-uppercase">Notifications</h5>
+              <h5 class="dropdown-header text-uppercase">
+                Notifications
+              </h5>
             </div>
             <ul class="nav-items mb-0">
               <li
                 v-for="(notification, index) in notifications"
                 :key="`notification-${index}`"
               >
-                <a class="text-dark d-flex py-2" :href="`${notification.href}`">
+                <a
+                  class="text-dark d-flex py-2"
+                  :href="`${notification.href}`"
+                >
                   <div class="flex-shrink-0 me-2 ms-3">
-                    <i :class="`${notification.icon}`"></i>
+                    <i :class="`${notification.icon}`" />
                   </div>
                   <div class="flex-grow-1 pe-2">
                     <div class="fw-semibold">{{ notification.title }}</div>
@@ -89,13 +97,18 @@ store.mainContent({ mode: "boxed" });
                   </div>
                 </a>
               </li>
-              <li v-if="!notifications.length" class="p-2">
+              <li
+                v-if="!notifications.length"
+                class="p-2"
+              >
                 <div
                   class="alert alert-light d-flex align-items-center space-x-2 mb-0"
                   role="alert"
                 >
-                  <i class="fa fa-exclamation-triangle opacity-50"></i>
-                  <p class="mb-0">No new ones!</p>
+                  <i class="fa fa-exclamation-triangle opacity-50" />
+                  <p class="mb-0">
+                    No new ones!
+                  </p>
                 </div>
               </li>
             </ul>
@@ -103,8 +116,11 @@ store.mainContent({ mode: "boxed" });
               v-if="notifications.length > 0"
               class="p-2 border-top text-center"
             >
-              <a class="d-inline-block fw-medium" href="javascript:void(0)">
-                <i class="fa fa-fw fa-arrow-down me-1 opacity-50"></i> Load
+              <a
+                class="d-inline-block fw-medium"
+                href="javascript:void(0)"
+              >
+                <i class="fa fa-fw fa-arrow-down me-1 opacity-50" /> Load
                 More..
               </a>
             </div>
@@ -122,23 +138,26 @@ store.mainContent({ mode: "boxed" });
           class="btn btn-sm btn-alt-secondary d-md-none"
           @click="store.headerSearch({ mode: 'on' })"
         >
-          <i class="fa fa-fw fa-search"></i>
+          <i class="fa fa-fw fa-search" />
         </button>
         <!-- END Open Search Section -->
 
         <!-- Search Form (visible on larger screens) -->
-        <form class="d-none d-md-inline-block" @submit.prevent="onSubmitSearch">
+        <form
+          class="d-none d-md-inline-block"
+          @submit.prevent="onSubmitSearch"
+        >
           <div class="input-group input-group-sm">
             <input
+              id="page-header-search-input2"
+              v-model="baseSearchTerm"
               type="text"
               class="form-control form-control-alt"
               placeholder="Search.."
-              id="page-header-search-input2"
               name="page-header-search-input2"
-              v-model="baseSearchTerm"
-            />
+            >
             <span class="input-group-text border-0">
-              <i class="fa fa-fw fa-search"></i>
+              <i class="fa fa-fw fa-search" />
             </span>
           </div>
         </form>
@@ -147,9 +166,9 @@ store.mainContent({ mode: "boxed" });
         <!-- User Dropdown -->
         <div class="dropdown d-inline-block ms-2">
           <button
+            id="page-header-user-dropdown"
             type="button"
             class="btn btn-sm btn-alt-secondary d-flex align-items-center"
-            id="page-header-user-dropdown"
             data-bs-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
@@ -159,11 +178,11 @@ store.mainContent({ mode: "boxed" });
               src="/assets/media/images/user.jpg"
               alt="Header Avatar"
               style="width: 21px"
-            />
+            >
             <span class="d-none d-sm-inline-block ms-2">John</span>
             <i
               class="fa fa-fw fa-angle-down d-none d-sm-inline-block opacity-50 ms-1"
-            ></i>
+            />
           </button>
           <div
             class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"
@@ -176,9 +195,13 @@ store.mainContent({ mode: "boxed" });
                 class="img-avatar img-avatar48 img-avatar-thumb"
                 src="/assets/media/images/user.jpg"
                 alt="Header Avatar"
-              />
-              <p class="mt-2 mb-0 fw-medium">John Smith</p>
-              <p class="mb-0 text-muted fs-sm fw-medium">Web Developer</p>
+              >
+              <p class="mt-2 mb-0 fw-medium">
+                John Smith
+              </p>
+              <p class="mb-0 text-muted fs-sm fw-medium">
+                Web Developer
+              </p>
             </div>
             <div class="p-2">
               <a
@@ -202,7 +225,10 @@ store.mainContent({ mode: "boxed" });
                 <span class="fs-sm fw-medium">Settings</span>
               </a>
             </div>
-            <div role="separator" class="dropdown-divider m-0"></div>
+            <div
+              role="separator"
+              class="dropdown-divider m-0"
+            />
             <div class="p-2">
               <RouterLink
                 :to="{ name: 'auth-lock' }"
@@ -243,7 +269,7 @@ store.mainContent({ mode: "boxed" });
                 "
               >
                 Menu
-                <i class="fa fa-bars"></i>
+                <i class="fa fa-bars" />
               </button>
             </div>
             <!-- END Toggle Navigation -->
@@ -253,7 +279,7 @@ store.mainContent({ mode: "boxed" });
               id="main-navigation"
               class="d-lg-block mt-2 mt-lg-0"
               :class="{
-                'd-none': !mobileNav,
+                'd-none': !mobileNav
               }"
             >
               <BaseNavigation

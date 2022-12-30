@@ -9,7 +9,7 @@ export default {
     {
       name: "Dashboard",
       to: "home",
-      icon: "si si-speedometer",
+      icon: "si si-speedometer"
     }
-  ],
+  ]
 };

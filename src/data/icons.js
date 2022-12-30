@@ -167,7 +167,7 @@ export default {
     "user",
     "window-maximize",
     "window-minimize",
-    "window-restore",
+    "window-restore"
   ],
   solid: [
     "0",
@@ -1560,7 +1560,7 @@ export default {
     "y",
     "yen-sign",
     "yin-yang",
-    "z",
+    "z"
   ],
   brands: [
     "42-group",
@@ -2027,7 +2027,7 @@ export default {
     "yelp",
     "yoast",
     "youtube",
-    "zhihu",
+    "zhihu"
   ],
   simpleline: [
     "action-redo",
@@ -2191,6 +2191,6 @@ export default {
     "volume-2",
     "volume-off",
     "wallet",
-    "wrench",
-  ],
+    "wrench"
+  ]
 };

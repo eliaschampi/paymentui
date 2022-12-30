@@ -19,7 +19,7 @@ store.setLayout({
   header: true,
   sidebar: true,
   sideOverlay: true,
-  footer: true,
+  footer: true
 });
 
 // Set various template options for this layout variation
@@ -42,32 +42,50 @@ onBeforeRouteLeave(() => {
       <!-- Sidebar Mini Nav -->
       <div class="sidebar-mini-nav">
         <!-- Logo -->
-        <RouterLink :to="{ name: 'home' }" class="mini-nav-item h-header">
-          <i class="fa fa-circle-notch text-primary"></i>
+        <RouterLink
+          :to="{ name: 'home' }"
+          class="mini-nav-item h-header"
+        >
+          <i class="fa fa-circle-notch text-primary" />
         </RouterLink>
         <!-- END Logo -->
 
         <!-- Mini Main Nav -->
         <nav class="flex-grow-1 space-y-1">
-          <a class="mini-nav-item" href="javascript:void(0)">
-            <i class="si si-briefcase fs-sm"></i>
+          <a
+            class="mini-nav-item"
+            href="javascript:void(0)"
+          >
+            <i class="si si-briefcase fs-sm" />
           </a>
-          <a class="mini-nav-item" href="javascript:void(0)">
-            <i class="si si-pie-chart fs-sm"></i>
+          <a
+            class="mini-nav-item"
+            href="javascript:void(0)"
+          >
+            <i class="si si-pie-chart fs-sm" />
           </a>
-          <a class="mini-nav-item" href="javascript:void(0)">
-            <i class="si si-users fs-sm"></i>
+          <a
+            class="mini-nav-item"
+            href="javascript:void(0)"
+          >
+            <i class="si si-users fs-sm" />
           </a>
         </nav>
         <!-- END Mini Main Nav -->
 
         <!-- Mini User Nav -->
         <nav class="space-y-1 pb-2">
-          <a class="mini-nav-item" href="javascript:void(0)">
-            <i class="si si-settings fs-sm"></i>
+          <a
+            class="mini-nav-item"
+            href="javascript:void(0)"
+          >
+            <i class="si si-settings fs-sm" />
           </a>
-          <a class="mini-nav-item" href="javascript:void(0)">
-            <i class="si si-logout fs-sm"></i>
+          <a
+            class="mini-nav-item"
+            href="javascript:void(0)"
+          >
+            <i class="si si-logout fs-sm" />
           </a>
         </nav>
         <!-- END Mini User Nav -->
@@ -75,13 +93,19 @@ onBeforeRouteLeave(() => {
       <!-- END Sidebar Mini Nav -->
 
       <!-- Sidebar Scrolling -->
-      <div id="simplebar-sidebar" class="js-sidebar-scroll full-height">
+      <div
+        id="simplebar-sidebar"
+        class="js-sidebar-scroll full-height"
+      >
         <!-- Side Header -->
         <div class="content-header">
           <!-- Logo -->
-          <RouterLink :to="{ name: 'home' }" class="fw-semibold text-dual">
+          <RouterLink
+            :to="{ name: 'home' }"
+            class="fw-semibold text-dual"
+          >
             <span class="smini-visible">
-              <i class="fa fa-circle-notch text-primary"></i>
+              <i class="fa fa-circle-notch text-primary" />
             </span>
             <span class="smini-hide fs-5 tracking-wider">
               OneUI
@@ -98,7 +122,7 @@ onBeforeRouteLeave(() => {
               class="d-lg-none btn btn-sm btn-alt-secondary ms-1"
               @click="store.sidebar({ mode: 'close' })"
             >
-              <i class="fa fa-fw fa-times"></i>
+              <i class="fa fa-fw fa-times" />
             </button>
             <!-- END Close Sidebar -->
           </div>
@@ -125,7 +149,7 @@ onBeforeRouteLeave(() => {
         class="btn btn-sm btn-alt-secondary me-2"
         @click="store.sidebar({ mode: 'toggle' })"
       >
-        <i class="fa fa-fw fa-bars"></i>
+        <i class="fa fa-fw fa-bars" />
       </button>
       <!-- END Toggle Sidebar -->
 
@@ -135,22 +159,25 @@ onBeforeRouteLeave(() => {
         class="btn btn-sm btn-alt-secondary d-md-none"
         @click="store.headerSearch({ mode: 'on' })"
       >
-        <i class="fa fa-fw fa-search"></i>
+        <i class="fa fa-fw fa-search" />
       </button>
       <!-- END Open Search Section -->
 
       <!-- Search Form (visible on larger screens) -->
-      <form class="d-none d-md-inline-block" @submit.prevent="onSubmitSearch">
+      <form
+        class="d-none d-md-inline-block"
+        @submit.prevent="onSubmitSearch"
+      >
         <div class="input-group input-group-sm">
           <input
+            id="page-header-search-input2"
             type="text"
             class="form-control form-control-alt"
             placeholder="Search.."
-            id="page-header-search-input2"
             name="page-header-search-input2"
-          />
+          >
           <span class="input-group-text border-0">
-            <i class="fa fa-fw fa-search"></i>
+            <i class="fa fa-fw fa-search" />
           </span>
         </div>
       </form>

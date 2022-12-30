@@ -11,7 +11,7 @@ store.setLayout({
   header: true,
   sidebar: false,
   sideOverlay: false,
-  footer: false,
+  footer: false
 });
 
 // Set various template options for this layout variation
@@ -51,15 +51,15 @@ store.mainContent({ mode: "boxed" });
       <!-- Options -->
       <div class="dropdown">
         <button
+          id="sidebar-themes-dropdown"
           type="button"
           class="btn btn-alt-secondary me-2"
-          id="sidebar-themes-dropdown"
           data-bs-toggle="dropdown"
           data-bs-auto-close="outside"
           aria-haspopup="true"
           aria-expanded="false"
         >
-          <i class="fa fa-brush"></i>
+          <i class="fa fa-brush" />
         </button>
         <div
           class="dropdown-menu dropdown-menu-end fs-sm smini-hide border-0"
@@ -72,7 +72,7 @@ store.mainContent({ mode: "boxed" });
             @click.prevent="store.setColorTheme({ theme: '' })"
           >
             <span>Default</span>
-            <i class="fa fa-circle text-default"></i>
+            <i class="fa fa-circle text-default" />
           </button>
           <button
             type="buttbuttonn"
@@ -80,7 +80,7 @@ store.mainContent({ mode: "boxed" });
             @click.prevent="store.setColorTheme({ theme: 'amethyst' })"
           >
             <span>Amethyst</span>
-            <i class="fa fa-circle text-amethyst"></i>
+            <i class="fa fa-circle text-amethyst" />
           </button>
           <button
             type="button"
@@ -88,7 +88,7 @@ store.mainContent({ mode: "boxed" });
             @click.prevent="store.setColorTheme({ theme: 'city' })"
           >
             <span>City</span>
-            <i class="fa fa-circle text-city"></i>
+            <i class="fa fa-circle text-city" />
           </button>
           <button
             type="button"
@@ -96,7 +96,7 @@ store.mainContent({ mode: "boxed" });
             @click.prevent="store.setColorTheme({ theme: 'flat' })"
           >
             <span>Flat</span>
-            <i class="fa fa-circle text-flat"></i>
+            <i class="fa fa-circle text-flat" />
           </button>
           <button
             type="button"
@@ -104,7 +104,7 @@ store.mainContent({ mode: "boxed" });
             @click.prevent="store.setColorTheme({ theme: 'modern' })"
           >
             <span>Modern</span>
-            <i class="fa fa-circle text-modern"></i>
+            <i class="fa fa-circle text-modern" />
           </button>
           <button
             type="button"
@@ -112,7 +112,7 @@ store.mainContent({ mode: "boxed" });
             @click.prevent="store.setColorTheme({ theme: 'smooth' })"
           >
             <span>Smooth</span>
-            <i class="fa fa-circle text-smooth"></i>
+            <i class="fa fa-circle text-smooth" />
           </button>
           <!-- END Color Themes -->
         </div>
@@ -121,11 +121,11 @@ store.mainContent({ mode: "boxed" });
 
       <!-- Purchase Link -->
       <a
+        v-click-ripple
         class="btn btn-success"
         href="https://1.envato.market/5Noyb"
-        v-click-ripple
       >
-        <i class="fa fa-fw fa-shopping-cart opacity-50"></i>
+        <i class="fa fa-fw fa-shopping-cart opacity-50" />
         <span class="d-none d-sm-inline-block ms-2">Purchase</span>
       </a>
       <!-- END Purchase Link -->

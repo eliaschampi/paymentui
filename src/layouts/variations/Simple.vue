@@ -11,7 +11,7 @@ store.setLayout({
   header: false,
   sidebar: false,
   sideOverlay: false,
-  footer: false,
+  footer: false
 });
 
 // Set various template options for this layout variation

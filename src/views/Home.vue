@@ -1,12 +1,17 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
-  <BasePageHeading title="Dashboard" subtitle="Welcome Admin!">
+  <BasePageHeading
+    title="Dashboard"
+    subtitle="Welcome Admin!"
+  >
     <template #extra>
-      <button type="button" class="btn btn-alt-primary" v-click-ripple>
-        <i class="fa fa-plus opacity-50 me-1"></i>
+      <button
+        v-click-ripple
+        type="button"
+        class="btn btn-alt-primary"
+      >
+        <i class="fa fa-plus opacity-50 me-1" />
         New Project
       </button>
     </template>
@@ -15,7 +20,10 @@
   <div class="content">
     <div class="row items-push">
       <div class="col-sm-6 col-xl-4">
-        <BaseBlock title="Block" class="h-100 mb-0">
+        <BaseBlock
+          title="Block"
+          class="h-100 mb-0"
+        >
           <p>
             This is a backend layout based page which you can use as a base for
             your backend pages.
@@ -29,12 +37,18 @@
         </BaseBlock>
       </div>
       <div class="col-sm-6 col-xl-4">
-        <BaseBlock title="Block" class="h-100 mb-0">
+        <BaseBlock
+          title="Block"
+          class="h-100 mb-0"
+        >
           <p>...</p>
         </BaseBlock>
       </div>
       <div class="col-xl-4">
-        <BaseBlock title="Block" class="h-100 mb-0">
+        <BaseBlock
+          title="Block"
+          class="h-100 mb-0"
+        >
           <p>...</p>
         </BaseBlock>
       </div>
