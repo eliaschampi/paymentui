@@ -61,7 +61,7 @@ onUnmounted(() => {
           <a class="img-link me-1" href="javascript:void(0)">
             <img
               class="img-avatar img-avatar32"
-              src="/assets/media/avatars/avatar10.jpg"
+              src="/assets/media/images/user.jpg"
               alt="Avatar"
             />
           </a>
