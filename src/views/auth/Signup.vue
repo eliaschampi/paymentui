@@ -4,15 +4,19 @@ import { Form, Field } from "vee-validate";
 import { useRouter } from "vue-router";
 import { object, string } from "yup";
 import Auth from "../components/Auth.vue";
+import { signupUser } from "../../api";
+import { useResponse } from "../../composables/useResponse";
 
-/*const router = useRouter();*/
+const router = useRouter();
+
+const response = useResponse();
 
 // Input state variables
 const state = reactive({
   email: "",
   password: "",
   username: "",
-  message: ""
+  res: {}
 });
 
 const schema = object().shape({
@@ -22,11 +26,20 @@ const schema = object().shape({
     .required("Contraseña es requerida"),
   username: string()
     .min(4, "Usuario debe tener al menos 4 caracteres")
-    .required("Contraseña es requerida")
+    .required("Nombre de usuario es obligatorio")
 });
 
-async function onSubmit({ email, password, username }) {
-  console.log(email, password, username);
+async function onSubmit(userdata) {
+  state.res = {};
+  try {
+    const { data } = await signupUser(userdata);
+    state.res = response.showAlert(data);
+    setTimeout(() => {
+      router.push({ name: "login" });
+    }, 1000);
+  } catch (error) {
+    state.res = response.showAlert(error);
+  }
 }
 </script>
 
@@ -44,10 +57,7 @@ async function onSubmit({ email, password, username }) {
           @submit="onSubmit"
         >
           <div class="mb-4">
-            <label
-              class="form-label"
-              for="fi-uname"
-            >Correo</label>
+            <label class="form-label" for="fi-uname"> Correo </label>
             <Field
               id="fi-uname"
               v-model="state.email"
@@ -58,18 +68,12 @@ async function onSubmit({ email, password, username }) {
               placeholder="Por ejemplo admin@aeduca.com"
             />
 
-            <div
-              v-show="errors.email"
-              class="invalid-feedback animated fadeIn"
-            >
+            <div v-show="errors.email" class="invalid-feedback animated fadeIn">
               {{ errors.email }}
             </div>
           </div>
           <div class="mb-4">
-            <label
-              class="form-label"
-              for="fi-password"
-            >Contraseña</label>
+            <label class="form-label" for="fi-password">Contraseña</label>
             <Field
               id="fi-password"
               v-model="state.password"
@@ -87,10 +91,7 @@ async function onSubmit({ email, password, username }) {
             </div>
           </div>
           <div class="mb-4">
-            <label
-              class="form-label"
-              for="fi-user"
-            >Nombre de usuario</label>
+            <label class="form-label" for="fi-user">Nombre de usuario</label>
             <Field
               id="fi-user"
               v-model="state.username"
@@ -109,11 +110,12 @@ async function onSubmit({ email, password, username }) {
             </div>
           </div>
           <div
-            v-show="state.message"
-            class="alert alert-danger alert-dismissible"
+            v-show="state.res.color"
+            class="alert-dismissible"
+            :class="state.res.color"
             role="alert"
           >
-            {{ state.message }}
+            {{ state.res.message }}
           </div>
           <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
@@ -125,10 +127,7 @@ async function onSubmit({ email, password, username }) {
               </RouterLink>
             </div>
             <div>
-              <button
-                type="submit"
-                class="btn btn-lg btn-alt-success"
-              >
+              <button type="submit" class="btn btn-lg btn-alt-success">
                 <i class="fa fa-fw fa-sign-up-alt me-1 opacity-50" />
                 Registrarme
               </button>

@@ -42,32 +42,20 @@ onBeforeRouteLeave(() => {
       <!-- Sidebar Mini Nav -->
       <div class="sidebar-mini-nav">
         <!-- Logo -->
-        <RouterLink
-          :to="{ name: 'home' }"
-          class="mini-nav-item h-header"
-        >
+        <RouterLink :to="{ name: 'home' }" class="mini-nav-item h-header">
           <i class="fa fa-circle-notch text-primary" />
         </RouterLink>
         <!-- END Logo -->
 
         <!-- Mini Main Nav -->
         <nav class="flex-grow-1 space-y-1">
-          <a
-            class="mini-nav-item"
-            href="javascript:void(0)"
-          >
+          <a class="mini-nav-item" href="javascript:void(0)">
             <i class="si si-briefcase fs-sm" />
           </a>
-          <a
-            class="mini-nav-item"
-            href="javascript:void(0)"
-          >
+          <a class="mini-nav-item" href="javascript:void(0)">
             <i class="si si-pie-chart fs-sm" />
           </a>
-          <a
-            class="mini-nav-item"
-            href="javascript:void(0)"
-          >
+          <a class="mini-nav-item" href="javascript:void(0)">
             <i class="si si-users fs-sm" />
           </a>
         </nav>
@@ -75,16 +63,10 @@ onBeforeRouteLeave(() => {
 
         <!-- Mini User Nav -->
         <nav class="space-y-1 pb-2">
-          <a
-            class="mini-nav-item"
-            href="javascript:void(0)"
-          >
+          <a class="mini-nav-item" href="javascript:void(0)">
             <i class="si si-settings fs-sm" />
           </a>
-          <a
-            class="mini-nav-item"
-            href="javascript:void(0)"
-          >
+          <a class="mini-nav-item" href="javascript:void(0)">
             <i class="si si-logout fs-sm" />
           </a>
         </nav>
@@ -93,17 +75,11 @@ onBeforeRouteLeave(() => {
       <!-- END Sidebar Mini Nav -->
 
       <!-- Sidebar Scrolling -->
-      <div
-        id="simplebar-sidebar"
-        class="js-sidebar-scroll full-height"
-      >
+      <div id="simplebar-sidebar" class="js-sidebar-scroll full-height">
         <!-- Side Header -->
         <div class="content-header">
           <!-- Logo -->
-          <RouterLink
-            :to="{ name: 'home' }"
-            class="fw-semibold text-dual"
-          >
+          <RouterLink :to="{ name: 'home' }" class="fw-semibold text-dual">
             <span class="smini-visible">
               <i class="fa fa-circle-notch text-primary" />
             </span>
@@ -164,10 +140,7 @@ onBeforeRouteLeave(() => {
       <!-- END Open Search Section -->
 
       <!-- Search Form (visible on larger screens) -->
-      <form
-        class="d-none d-md-inline-block"
-        @submit.prevent="onSubmitSearch"
-      >
+      <form class="d-none d-md-inline-block" @submit.prevent="onSubmitSearch">
         <div class="input-group input-group-sm">
           <input
             id="page-header-search-input2"
@@ -175,7 +148,7 @@ onBeforeRouteLeave(() => {
             class="form-control form-control-alt"
             placeholder="Search.."
             name="page-header-search-input2"
-          >
+          />
           <span class="input-group-text border-0">
             <i class="fa fa-fw fa-search" />
           </span>

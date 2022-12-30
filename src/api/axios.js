@@ -28,7 +28,6 @@ instance.interceptors.response.use(
       details: null,
       data: null
     };
-
     const { response: res } = error;
     if (res) {
       errData = res.data;

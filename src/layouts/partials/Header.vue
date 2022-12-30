@@ -65,7 +65,7 @@ async function logoutUser() {
                     :src="`${getEsential.image}`"
                     alt="Header Avatar"
                     style="width: 21px"
-                  >
+                  />
                   <span class="d-none d-sm-inline-block ms-2">{{
                     getEsential.username
                   }}</span>
@@ -84,7 +84,7 @@ async function logoutUser() {
                       class="img-avatar img-avatar48 img-avatar-thumb"
                       :src="`${getEsential.image}`"
                       alt="Header Avatar"
-                    >
+                    />
                     <p class="mt-2 mb-0 fw-medium">
                       {{ getEsential.username }}
                     </p>
@@ -107,10 +107,7 @@ async function logoutUser() {
                       <span class="fs-sm fw-medium">Configuración</span>
                     </a>
                   </div>
-                  <div
-                    role="separator"
-                    class="dropdown-divider m-0"
-                  />
+                  <div role="separator" class="dropdown-divider m-0" />
                   <div class="p-2">
                     <button
                       class="dropdown-item d-flex align-items-center justify-content-between"

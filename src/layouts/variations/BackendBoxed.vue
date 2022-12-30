@@ -61,10 +61,7 @@ store.mainContent({ mode: "boxed" });
             aria-expanded="false"
           >
             <i class="fa fa-fw fa-bell" />
-            <span
-              v-if="notifications.length > 0"
-              class="text-primary"
-            >•</span>
+            <span v-if="notifications.length > 0" class="text-primary">•</span>
           </button>
           <div
             class="dropdown-menu dropdown-menu-lg p-0 border-0 fs-sm"
@@ -73,19 +70,14 @@ store.mainContent({ mode: "boxed" });
             <div
               class="p-2 bg-body-light border-bottom text-center rounded-top"
             >
-              <h5 class="dropdown-header text-uppercase">
-                Notifications
-              </h5>
+              <h5 class="dropdown-header text-uppercase">Notifications</h5>
             </div>
             <ul class="nav-items mb-0">
               <li
                 v-for="(notification, index) in notifications"
                 :key="`notification-${index}`"
               >
-                <a
-                  class="text-dark d-flex py-2"
-                  :href="`${notification.href}`"
-                >
+                <a class="text-dark d-flex py-2" :href="`${notification.href}`">
                   <div class="flex-shrink-0 me-2 ms-3">
                     <i :class="`${notification.icon}`" />
                   </div>
@@ -97,18 +89,13 @@ store.mainContent({ mode: "boxed" });
                   </div>
                 </a>
               </li>
-              <li
-                v-if="!notifications.length"
-                class="p-2"
-              >
+              <li v-if="!notifications.length" class="p-2">
                 <div
                   class="alert alert-light d-flex align-items-center space-x-2 mb-0"
                   role="alert"
                 >
                   <i class="fa fa-exclamation-triangle opacity-50" />
-                  <p class="mb-0">
-                    No new ones!
-                  </p>
+                  <p class="mb-0">No new ones!</p>
                 </div>
               </li>
             </ul>
@@ -116,12 +103,8 @@ store.mainContent({ mode: "boxed" });
               v-if="notifications.length > 0"
               class="p-2 border-top text-center"
             >
-              <a
-                class="d-inline-block fw-medium"
-                href="javascript:void(0)"
-              >
-                <i class="fa fa-fw fa-arrow-down me-1 opacity-50" /> Load
-                More..
+              <a class="d-inline-block fw-medium" href="javascript:void(0)">
+                <i class="fa fa-fw fa-arrow-down me-1 opacity-50" /> Load More..
               </a>
             </div>
           </div>
@@ -143,10 +126,7 @@ store.mainContent({ mode: "boxed" });
         <!-- END Open Search Section -->
 
         <!-- Search Form (visible on larger screens) -->
-        <form
-          class="d-none d-md-inline-block"
-          @submit.prevent="onSubmitSearch"
-        >
+        <form class="d-none d-md-inline-block" @submit.prevent="onSubmitSearch">
           <div class="input-group input-group-sm">
             <input
               id="page-header-search-input2"
@@ -155,7 +135,7 @@ store.mainContent({ mode: "boxed" });
               class="form-control form-control-alt"
               placeholder="Search.."
               name="page-header-search-input2"
-            >
+            />
             <span class="input-group-text border-0">
               <i class="fa fa-fw fa-search" />
             </span>
@@ -178,7 +158,7 @@ store.mainContent({ mode: "boxed" });
               src="/assets/media/images/user.jpg"
               alt="Header Avatar"
               style="width: 21px"
-            >
+            />
             <span class="d-none d-sm-inline-block ms-2">John</span>
             <i
               class="fa fa-fw fa-angle-down d-none d-sm-inline-block opacity-50 ms-1"
@@ -195,13 +175,9 @@ store.mainContent({ mode: "boxed" });
                 class="img-avatar img-avatar48 img-avatar-thumb"
                 src="/assets/media/images/user.jpg"
                 alt="Header Avatar"
-              >
-              <p class="mt-2 mb-0 fw-medium">
-                John Smith
-              </p>
-              <p class="mb-0 text-muted fs-sm fw-medium">
-                Web Developer
-              </p>
+              />
+              <p class="mt-2 mb-0 fw-medium">John Smith</p>
+              <p class="mb-0 text-muted fs-sm fw-medium">Web Developer</p>
             </div>
             <div class="p-2">
               <a
@@ -225,10 +201,7 @@ store.mainContent({ mode: "boxed" });
                 <span class="fs-sm fw-medium">Settings</span>
               </a>
             </div>
-            <div
-              role="separator"
-              class="dropdown-divider m-0"
-            />
+            <div role="separator" class="dropdown-divider m-0" />
             <div class="p-2">
               <RouterLink
                 :to="{ name: 'auth-lock' }"

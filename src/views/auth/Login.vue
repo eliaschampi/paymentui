@@ -5,14 +5,16 @@ import { useRouter } from "vue-router";
 import { object, string } from "yup";
 import { useAuthStore } from "../../stores/auth";
 import Auth from "../components/Auth.vue";
+import { useResponse } from "../../composables/useResponse";
 
 const router = useRouter();
+const response = useResponse();
 
 // Input state variables
 const state = reactive({
   email: "",
   password: "",
-  message: ""
+  res: {}
 });
 
 const schema = object().shape({
@@ -23,12 +25,11 @@ const schema = object().shape({
 });
 
 async function onSubmit({ email, password }) {
-  state.message = "";
+  state.res = "";
   const { login } = useAuthStore();
   const err = await login(email, password);
   if (err) {
-    state.message = err.message;
-    return;
+    state.res = response.showAlert(err);
   }
   router.push({ name: "home" });
 }
@@ -48,10 +49,7 @@ async function onSubmit({ email, password }) {
           @submit="onSubmit"
         >
           <div class="mb-4">
-            <label
-              class="form-label"
-              for="fi-uname"
-            >Correo</label>
+            <label class="form-label" for="fi-uname">Correo</label>
             <Field
               id="fi-uname"
               v-model="state.email"
@@ -62,18 +60,12 @@ async function onSubmit({ email, password }) {
               placeholder="Por ejemplo admin@aeduca.com"
             />
 
-            <div
-              v-show="errors.email"
-              class="invalid-feedback animated fadeIn"
-            >
+            <div v-show="errors.email" class="invalid-feedback animated fadeIn">
               {{ errors.email }}
             </div>
           </div>
           <div class="mb-4">
-            <label
-              class="form-label"
-              for="fi-uname"
-            >Contraseña</label>
+            <label class="form-label" for="fi-uname">Contraseña</label>
             <Field
               id="fi-uname"
               v-model="state.password"
@@ -91,11 +83,12 @@ async function onSubmit({ email, password }) {
             </div>
           </div>
           <div
-            v-show="state.message"
-            class="alert alert-danger alert-dismissible"
+            v-show="state.res.color"
+            class="alert-dismissible"
+            :class="state.res.color"
             role="alert"
           >
-            {{ state.message }}
+            {{ state.res.message }}
           </div>
           <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
@@ -107,10 +100,7 @@ async function onSubmit({ email, password }) {
               </RouterLink>
             </div>
             <div>
-              <button
-                type="submit"
-                class="btn btn-lg btn-alt-primary"
-              >
+              <button type="submit" class="btn btn-lg btn-alt-primary">
                 <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50" />
                 Iniciar sesión
               </button>

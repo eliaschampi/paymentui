@@ -36,10 +36,7 @@ store.mainContent({ mode: "narrow" });
 
       <!-- Mega Menu -->
       <nav class="d-none d-lg-flex align-items-center space-x-2">
-        <a
-          class="btn btn-sm btn-alt-secondary"
-          href="javascript:void(0)"
-        >
+        <a class="btn btn-sm btn-alt-secondary" href="javascript:void(0)">
           <i class="fa fa-home opacity-50 me-2" />
           <span>Dashboard</span>
         </a>
@@ -62,9 +59,7 @@ store.mainContent({ mode: "narrow" });
             <div
               class="px-3 py-3 bg-primary rounded-top d-flex align-items-center justify-content-between"
             >
-              <h3 class="h5 fw-semibold text-white mb-0">
-                My Projects
-              </h3>
+              <h3 class="h5 fw-semibold text-white mb-0">My Projects</h3>
               <i
                 class="fa fa-2x fa-globe-americas text-white opacity-25 ms-2"
               />
@@ -81,9 +76,7 @@ store.mainContent({ mode: "narrow" });
                     class="text-center mb-0"
                   >
                     <i class="fa fa-2x fa-globe-americas opacity-50" />
-                    <p class="fw-medium mt-3">
-                      example.com
-                    </p>
+                    <p class="fw-medium mt-3">example.com</p>
                   </BaseBlock>
                 </div>
                 <div class="col-xxl-4">
@@ -96,9 +89,7 @@ store.mainContent({ mode: "narrow" });
                     class="text-center mb-0"
                   >
                     <i class="fa fa-2x fa-globe-americas opacity-50" />
-                    <p class="fw-medium mt-3">
-                      example2.com
-                    </p>
+                    <p class="fw-medium mt-3">example2.com</p>
                   </BaseBlock>
                 </div>
                 <div class="col-xxl-4">
@@ -111,9 +102,7 @@ store.mainContent({ mode: "narrow" });
                     class="text-center mb-0"
                   >
                     <i class="fa fa-2x fa-globe-americas opacity-50" />
-                    <p class="fw-medium mt-3">
-                      example3.com
-                    </p>
+                    <p class="fw-medium mt-3">example3.com</p>
                   </BaseBlock>
                 </div>
                 <div class="col-xxl-4">
@@ -126,9 +115,7 @@ store.mainContent({ mode: "narrow" });
                     class="text-center mb-0"
                   >
                     <i class="fa fa-2x fa-globe-americas opacity-50" />
-                    <p class="fw-medium mt-3">
-                      example4.com
-                    </p>
+                    <p class="fw-medium mt-3">example4.com</p>
                   </BaseBlock>
                 </div>
                 <div class="col-xxl-4">
@@ -141,9 +128,7 @@ store.mainContent({ mode: "narrow" });
                     class="text-center mb-0"
                   >
                     <i class="fa fa-2x fa-plus text-success opacity-50" />
-                    <p class="fw-medium mt-3">
-                      Add New
-                    </p>
+                    <p class="fw-medium mt-3">Add New</p>
                   </BaseBlock>
                 </div>
               </div>
@@ -169,9 +154,7 @@ store.mainContent({ mode: "narrow" });
             <div
               class="px-3 py-3 bg-primary rounded-top d-flex align-items-center justify-content-between"
             >
-              <h3 class="h5 fw-semibold text-white mb-0">
-                My Applications
-              </h3>
+              <h3 class="h5 fw-semibold text-white mb-0">My Applications</h3>
               <i class="fa fa-2x fa-box text-white opacity-25 ms-2" />
             </div>
             <div class="p-3">
@@ -183,10 +166,7 @@ store.mainContent({ mode: "narrow" });
                   </h4>
                   <ul class="list list-simple-mini mb-0">
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
+                      <a class="fw-semibold" href="javascript:void(0)">
                         <i
                           class="fa fa-fw fa-file-word text-primary-lighter me-1"
                         />
@@ -194,10 +174,7 @@ store.mainContent({ mode: "narrow" });
                       </a>
                     </li>
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
+                      <a class="fw-semibold" href="javascript:void(0)">
                         <i
                           class="fa fa-fw fa-file-excel text-primary-lighter me-1"
                         />
@@ -205,10 +182,7 @@ store.mainContent({ mode: "narrow" });
                       </a>
                     </li>
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
+                      <a class="fw-semibold" href="javascript:void(0)">
                         <i
                           class="fa fa-fw fa-file-powerpoint text-primary-lighter me-1"
                         />
@@ -216,10 +190,7 @@ store.mainContent({ mode: "narrow" });
                       </a>
                     </li>
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
+                      <a class="fw-semibold" href="javascript:void(0)">
                         <i
                           class="fa fa-fw fa-file-alt text-primary-lighter me-1"
                         />
@@ -227,10 +198,7 @@ store.mainContent({ mode: "narrow" });
                       </a>
                     </li>
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
+                      <a class="fw-semibold" href="javascript:void(0)">
                         <i
                           class="fa fa-fw fa-file-csv text-primary-lighter me-1"
                         />
@@ -246,21 +214,13 @@ store.mainContent({ mode: "narrow" });
                   </h4>
                   <ul class="list list-simple-mini mb-0">
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
-                        <i
-                          class="fa fa-fw fa-code text-primary-lighter me-1"
-                        />
+                      <a class="fw-semibold" href="javascript:void(0)">
+                        <i class="fa fa-fw fa-code text-primary-lighter me-1" />
                         VS Code
                       </a>
                     </li>
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
+                      <a class="fw-semibold" href="javascript:void(0)">
                         <i
                           class="fa fa-fw fa-code-branch text-primary-lighter me-1"
                         />
@@ -268,10 +228,7 @@ store.mainContent({ mode: "narrow" });
                       </a>
                     </li>
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
+                      <a class="fw-semibold" href="javascript:void(0)">
                         <i
                           class="fab fa-fw fa-figma text-primary-lighter me-1"
                         />
@@ -279,10 +236,7 @@ store.mainContent({ mode: "narrow" });
                       </a>
                     </li>
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
+                      <a class="fw-semibold" href="javascript:void(0)">
                         <i
                           class="fab fa-fw fa-stack-overflow text-primary-lighter me-1"
                         />
@@ -290,10 +244,7 @@ store.mainContent({ mode: "narrow" });
                       </a>
                     </li>
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
+                      <a class="fw-semibold" href="javascript:void(0)">
                         <i
                           class="fab fa-fw fa-sourcetree text-primary-lighter me-1"
                         />
@@ -309,10 +260,7 @@ store.mainContent({ mode: "narrow" });
                   </h4>
                   <ul class="list list-simple-mini mb-0">
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
+                      <a class="fw-semibold" href="javascript:void(0)">
                         <i
                           class="fab fa-fw fa-slack text-primary-lighter me-1"
                         />
@@ -320,10 +268,7 @@ store.mainContent({ mode: "narrow" });
                       </a>
                     </li>
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
+                      <a class="fw-semibold" href="javascript:void(0)">
                         <i
                           class="fab fa-fw fa-discord text-primary-lighter me-1"
                         />
@@ -331,10 +276,7 @@ store.mainContent({ mode: "narrow" });
                       </a>
                     </li>
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
+                      <a class="fw-semibold" href="javascript:void(0)">
                         <i
                           class="fab fa-fw fa-discourse text-primary-lighter me-1"
                         />
@@ -342,10 +284,7 @@ store.mainContent({ mode: "narrow" });
                       </a>
                     </li>
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
+                      <a class="fw-semibold" href="javascript:void(0)">
                         <i
                           class="fab fa-fw fa-diaspora text-primary-lighter me-1"
                         />
@@ -353,10 +292,7 @@ store.mainContent({ mode: "narrow" });
                       </a>
                     </li>
                     <li>
-                      <a
-                        class="fw-semibold"
-                        href="javascript:void(0)"
-                      >
+                      <a class="fw-semibold" href="javascript:void(0)">
                         <i
                           class="fa fa-fw fa-comments text-primary-lighter me-1"
                         />
@@ -389,9 +325,7 @@ store.mainContent({ mode: "narrow" });
             <div
               class="px-3 py-3 bg-primary rounded-top d-flex align-items-center justify-content-between"
             >
-              <h3 class="h5 fw-semibold text-white mb-0">
-                My Settings
-              </h3>
+              <h3 class="h5 fw-semibold text-white mb-0">My Settings</h3>
               <i class="fa fa-2x fa-cog text-white opacity-25 ms-2" />
             </div>
             <div class="p-3">
@@ -400,9 +334,7 @@ store.mainContent({ mode: "narrow" });
                 <div class="row fs-sm">
                   <div class="col-xxl-6 space-y-4">
                     <div>
-                      <p class="fs-sm fw-semibold mb-2">
-                        Online Status
-                      </p>
+                      <p class="fs-sm fw-semibold mb-2">Online Status</p>
                       <div class="form-check form-switch">
                         <input
                           id="mega-settings-status"
@@ -410,17 +342,16 @@ store.mainContent({ mode: "narrow" });
                           type="checkbox"
                           value=""
                           name="mega-settings-status"
-                        >
+                        />
                         <label
                           class="form-check-label fs-sm"
                           for="mega-settings-status"
-                        >Make visible</label>
+                          >Make visible</label
+                        >
                       </div>
                     </div>
                     <div>
-                      <p class="fs-sm fw-semibold mb-2">
-                        Updates
-                      </p>
+                      <p class="fs-sm fw-semibold mb-2">Updates</p>
                       <div class="space-y-2">
                         <div class="form-check form-switch">
                           <input
@@ -429,11 +360,12 @@ store.mainContent({ mode: "narrow" });
                             type="checkbox"
                             value=""
                             name="mega-settings-update-app"
-                          >
+                          />
                           <label
                             class="form-check-label fs-sm"
                             for="mega-settings-update-app"
-                          >Applications</label>
+                            >Applications</label
+                          >
                         </div>
                         <div class="form-check form-switch">
                           <input
@@ -443,20 +375,19 @@ store.mainContent({ mode: "narrow" });
                             value=""
                             name="mega-settings-update-sales"
                             checked
-                          >
+                          />
                           <label
                             class="form-check-label fs-sm"
                             for="mega-settings-update-sales"
-                          >Sales</label>
+                            >Sales</label
+                          >
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="col-xxl-6 space-y-4 mt-4 mt-xxl-0">
                     <div>
-                      <p class="fs-sm fw-semibold mb-1">
-                        Application Alerts
-                      </p>
+                      <p class="fs-sm fw-semibold mb-1">Application Alerts</p>
                       <div class="space-y-2">
                         <div class="form-check form-switch">
                           <input
@@ -466,11 +397,12 @@ store.mainContent({ mode: "narrow" });
                             value=""
                             name="mega-settings-email"
                             checked
-                          >
+                          />
                           <label
                             class="form-check-label fs-sm"
                             for="mega-settings-email"
-                          >Email Notifications</label>
+                            >Email Notifications</label
+                          >
                         </div>
                         <div class="form-check form-switch">
                           <input
@@ -479,18 +411,17 @@ store.mainContent({ mode: "narrow" });
                             type="checkbox"
                             value=""
                             name="mega-settings-sms"
-                          >
+                          />
                           <label
                             class="form-check-label fs-sm"
                             for="mega-settings-sms"
-                          >SMS Notifications</label>
+                            >SMS Notifications</label
+                          >
                         </div>
                       </div>
                     </div>
                     <div>
-                      <p class="fs-sm fw-semibold mb-1">
-                        API
-                      </p>
+                      <p class="fs-sm fw-semibold mb-1">API</p>
                       <div class="form-check form-switch">
                         <input
                           id="mega-settings-api"
@@ -499,11 +430,12 @@ store.mainContent({ mode: "narrow" });
                           value=""
                           name="mega-settings-api"
                           checked
-                        >
+                        />
                         <label
                           class="form-check-label fs-sm"
                           for="mega-settings-api"
-                        >Enable access</label>
+                          >Enable access</label
+                        >
                       </div>
                     </div>
                   </div>

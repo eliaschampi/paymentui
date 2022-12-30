@@ -16,19 +16,12 @@ const store = useTemplateStore();
               <slot name="content-right">
                 Desarrollando con
                 <i class="fa fa-heart text-danger" /> por
-                <a
-                  class="fw-semibold"
-                  href="#"
-                  target="_blank"
-                >Elias</a>
+                <a class="fw-semibold" href="#" target="_blank">Elias</a>
               </slot>
             </div>
             <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-start">
               <slot name="content-left">
-                <a
-                  class="fw-semibold"
-                  href="#"
-                >
+                <a class="fw-semibold" href="#">
                   {{ store.app.name + " " + store.app.version }}
                 </a>
                 &copy; {{ store.app.copyright }}
