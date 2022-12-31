@@ -3,27 +3,27 @@ import { onMounted } from "vue";
 import { useTemplateStore } from "../stores/template";
 import { useServiceStore } from "../stores/service";
 import ServiceCard from "./components/ServiceCard.vue";
+import rtypes from "../data/response";
 
 const store = useTemplateStore();
 const serviceStore = useServiceStore();
 
-onMounted(() => {
-  serviceStore.fetchAll();
-});
+onMounted(serviceStore.fetchAll);
+
+async function defineRname(name) {
+  const full = rtypes[name];
+  if (full) {
+    return full;
+  }
+  return "Servicio";
+}
+
 </script>
 
 <template>
-  <BasePageHeading
-    title="Sistema de pagos"
-    subtitle="Bienvenido querido usuario!"
-  >
+  <BasePageHeading title="Sistema de pagos" subtitle="Bienvenido querido usuario!">
     <template #extra>
-      <button
-        v-click-ripple
-        @click="store.sideOverlay({ mode: 'toggle' })"
-        type="button"
-        class="btn btn-alt-primary"
-      >
+      <button v-click-ripple @click="store.sideOverlay({ mode: 'toggle' })" type="button" class="btn btn-alt-primary">
         <i class="fa fa-plus opacity-50 me-1" />
         Nuevo Servicio
       </button>
@@ -39,11 +39,7 @@ onMounted(() => {
         </div>
       </div>
       <template v-for="item in serviceStore.services">
-        <ServiceCard
-          :name="item.name"
-          :description="item.description"
-          :logo="item.logo"
-        />
+        <ServiceCard :name="defineRname(item.name)" :description="item.description" :logo="item.logo" />
       </template>
     </div>
   </div>
