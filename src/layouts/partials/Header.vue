@@ -10,7 +10,7 @@ const { getEsential, logout } = useAuthStore();
 
 async function logoutUser() {
   await logout();
-  router.push({ name: "login" });
+  window.location.reload();
 }
 </script>
 
@@ -40,8 +40,11 @@ async function logoutUser() {
                 class="btn btn-sm btn-alt-secondary me-2 d-none d-lg-inline-block"
                 @click="store.sidebarMini({ mode: 'toggle' })"
               >
-                <i class="fa fa-fw fa-ellipsis-v" />
+                <i class="fa fa-fw fa-bars" />
               </button>
+              <strong class="text-primary"
+                >Hoy es {{ new Date().toLocaleDateString() }}</strong
+              >
               <!-- END Toggle Mini Sidebar -->
             </slot>
           </div>
@@ -119,16 +122,6 @@ async function logoutUser() {
                 </div>
               </div>
               <!-- END User Dropdown -->
-
-              <!-- Toggle Side Overlay -->
-              <button
-                type="button"
-                class="btn btn-sm btn-alt-secondary ms-2"
-                @click="store.sideOverlay({ mode: 'toggle' })"
-              >
-                <i class="fa fa-fw fa-list-ul fa-flip-horizontal" />
-              </button>
-              <!-- END Toggle Side Overlay -->
             </slot>
           </div>
           <!-- END Right Section -->

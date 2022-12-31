@@ -9,6 +9,7 @@ import { useAuthStore } from "../stores/auth";
 //Auth layout
 const AuthLogin = () => import("@/views/auth/Login.vue");
 const AuthSignup = () => import("@/views/auth/Signup.vue");
+const BackendUser = () => import("@/views/User.vue");
 
 // Backend: Dashboard
 const Dashboard = () => import("@/views/Home.vue");
@@ -24,6 +25,11 @@ const routes = [
         path: "home",
         name: "home",
         component: Dashboard
+      },
+      {
+        path: "user",
+        name: "user",
+        component: BackendUser
       }
     ]
   },

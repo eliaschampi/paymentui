@@ -4,7 +4,6 @@ import { useTemplateStore } from "@/stores/template";
 
 import BaseNavigation from "@/components/BaseNavigation.vue";
 
-// SimpleBar, for more info and examples you can check out https://github.com/Grsmto/simplebar/tree/master/packages/simplebar-vue
 import SimpleBar from "simplebar";
 
 // Grab menu navigation arrays
@@ -146,7 +145,7 @@ onMounted(() => {
                     <label
                       class="form-check-label fw-medium"
                       for="radio-dark-mode-off"
-                      >Light</label
+                      >Dia</label
                     >
                   </div>
                   <div class="form-check">
@@ -161,8 +160,8 @@ onMounted(() => {
                     <label
                       class="form-check-label fw-medium"
                       for="radio-dark-mode-on"
-                      >Dark</label
-                    >
+                      >Noche
+                    </label>
                   </div>
                   <div class="form-check mb-0">
                     <input
@@ -176,8 +175,9 @@ onMounted(() => {
                     <label
                       class="form-check-label fw-medium"
                       for="radio-dark-mode-system"
-                      >System</label
                     >
+                      Segun el SO
+                    </label>
                   </div>
                 </div>
               </div>
@@ -207,7 +207,7 @@ onMounted(() => {
                   class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
                   @click="store.setColorTheme({ theme: '' })"
                 >
-                  <span>Default</span>
+                  <span>Predeterminado</span>
                   <i class="fa fa-circle text-default" />
                 </button>
                 <button
@@ -215,7 +215,7 @@ onMounted(() => {
                   class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
                   @click="store.setColorTheme({ theme: 'amethyst' })"
                 >
-                  <span>Amethyst</span>
+                  <span>Nerd</span>
                   <i class="fa fa-circle text-amethyst" />
                 </button>
                 <button
@@ -223,7 +223,7 @@ onMounted(() => {
                   class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
                   @click="store.setColorTheme({ theme: 'city' })"
                 >
-                  <span>City</span>
+                  <span>Programador</span>
                   <i class="fa fa-circle text-city" />
                 </button>
                 <button
@@ -231,7 +231,7 @@ onMounted(() => {
                   class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
                   @click="store.setColorTheme({ theme: 'flat' })"
                 >
-                  <span>Flat</span>
+                  <span>Panda color</span>
                   <i class="fa fa-circle text-flat" />
                 </button>
                 <button
@@ -239,7 +239,7 @@ onMounted(() => {
                   class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
                   @click="store.setColorTheme({ theme: 'modern' })"
                 >
-                  <span>Modern</span>
+                  <span>Moderno</span>
                   <i class="fa fa-circle text-modern" />
                 </button>
                 <button
@@ -247,7 +247,7 @@ onMounted(() => {
                   class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
                   @click="store.setColorTheme({ theme: 'smooth' })"
                 >
-                  <span>Smooth</span>
+                  <span>Suave</span>
                   <i class="fa fa-circle text-smooth" />
                 </button>
                 <!-- END Color Themes -->
@@ -261,14 +261,14 @@ onMounted(() => {
                     class="dropdown-item fw-medium"
                     @click="store.sidebarStyle({ mode: 'light' })"
                   >
-                    <span>Sidebar Light</span>
+                    <span>Sidebar Dia</span>
                   </button>
                   <button
                     type="button"
                     class="dropdown-item fw-medium"
                     @click="store.sidebarStyle({ mode: 'dark' })"
                   >
-                    <span>Sidebar Dark</span>
+                    <span>Sidebar Noche</span>
                   </button>
                   <!-- END Sidebar Styles -->
 
@@ -280,14 +280,14 @@ onMounted(() => {
                     class="dropdown-item fw-medium"
                     @click="store.headerStyle({ mode: 'light' })"
                   >
-                    <span>Header Light</span>
+                    <span>Header Dia</span>
                   </button>
                   <button
                     type="button"
                     class="dropdown-item fw-medium"
                     @click="store.headerStyle({ mode: 'dark' })"
                   >
-                    <span>Header Dark</span>
+                    <span>Header Noche</span>
                   </button>
                   <!-- END Header Styles -->
                 </div>

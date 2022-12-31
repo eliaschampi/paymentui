@@ -28,9 +28,16 @@ instance.interceptors.response.use(
       details: null,
       data: null
     };
+
     const { response: res } = error;
     if (res) {
       errData = res.data;
+      if (
+        errData.status_code === 401 &&
+        errData.details.code === "token_not_valid"
+      ) {
+        cache.cleanAll();
+      }
     }
     return Promise.reject(errData);
   }

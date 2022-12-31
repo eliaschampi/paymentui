@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import cache from "../utils/cache";
-import api from "../api/axios";
+import { sigin } from "../api";
 
 export const useAuthStore = defineStore({
   id: "auth",
@@ -25,7 +25,7 @@ export const useAuthStore = defineStore({
       try {
         const {
           data: { data, tokens }
-        } = await api.post("/users/login/", { email, password });
+        } = await sigin({ email, password });
         cache.setItem("user", data);
         cache.setItem("token", tokens.access);
         this.user = data;
@@ -35,13 +35,7 @@ export const useAuthStore = defineStore({
       }
     },
     async logout() {
-      try {
-        await api.post("/logout");
-        cache.cleanAll();
-        this.user = null;
-      } catch (error) {
-        return error;
-      }
+      cache.cleanAll();
     }
   }
 });
