@@ -1,11 +1,11 @@
 export default {
-    200: "alert alert-success",
-    201: "alert alert-success",
-    400: "alert alert-warning",
-    401: "alert alert-warning",
-    404: "alert alert-warning",
-    422: "alert alert-warning",
-    500: "alert alert-danger",
-    502: "alert alert-danger",
-    503: "alert alert-danger"
-}
+  200: "success",
+  201: "success",
+  400: "warning",
+  401: "warning",
+  404: "warning",
+  422: "warning",
+  500: "danger",
+  502: "danger",
+  503: "danger"
+};

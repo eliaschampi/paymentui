@@ -123,12 +123,11 @@ async function onSubmit(userdata) {
                 :to="{ name: 'login' }"
                 class="btn btn-lg btn-alt-primary"
               >
-                Volver a login
+                Volver
               </RouterLink>
             </div>
             <div>
               <button type="submit" class="btn btn-lg btn-alt-success">
-                <i class="fa fa-fw fa-sign-up-alt me-1 opacity-50" />
                 Registrarme
               </button>
             </div>

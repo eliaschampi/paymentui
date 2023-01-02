@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, reactive } from "vue";
 import { useTemplateStore } from "../stores/template";
 import { useServiceStore } from "../stores/service";
 import ServiceCard from "./components/ServiceCard.vue";
@@ -7,7 +7,7 @@ import rtypes from "../data/response";
 
 const store = useTemplateStore();
 const serviceStore = useServiceStore();
-
+const disablebtn = reactive(false);
 onMounted(serviceStore.fetchAll);
 
 async function defineRname(name) {
@@ -17,13 +17,20 @@ async function defineRname(name) {
   }
   return "Servicio";
 }
-
 </script>
 
 <template>
-  <BasePageHeading title="Sistema de pagos" subtitle="Bienvenido querido usuario!">
+  <BasePageHeading
+    title="Sistema de pagos"
+    subtitle="Bienvenido querido usuario!"
+  >
     <template #extra>
-      <button v-click-ripple @click="store.sideOverlay({ mode: 'toggle' })" type="button" class="btn btn-alt-primary">
+      <button
+        v-click-ripple
+        @click="store.sideOverlay({ mode: 'toggle' })"
+        type="button"
+        class="btn btn-alt-primary"
+      >
         <i class="fa fa-plus opacity-50 me-1" />
         Nuevo Servicio
       </button>
@@ -39,7 +46,12 @@ async function defineRname(name) {
         </div>
       </div>
       <template v-for="item in serviceStore.services">
-        <ServiceCard :name="defineRname(item.name)" :description="item.description" :logo="item.logo" />
+        <ServiceCard
+          :editable="disablebtn"
+          :name="defineRname(item.name)"
+          :description="item.description"
+          :logo="item.logo"
+        />
       </template>
     </div>
   </div>

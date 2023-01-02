@@ -1,11 +1,29 @@
 <script setup>
-import { onMounted, onUnmounted } from "vue";
+import { onMounted, onUnmounted, computed } from "vue";
 import { useTemplateStore } from "@/stores/template";
-
+import { useServiceStore } from "@/stores/service";
+import services from "../../data/services";
+import { object, string } from "yup";
 import SimpleBar from "simplebar";
+import { Form, Field } from "vee-validate";
 
 const store = useTemplateStore();
+const ser = useServiceStore();
 
+const schema = object().shape({
+  name: string().required("El nombre es obligatorio"),
+  description: string()
+    .min(5, "La Descripción debe ser mayor a 5 caracteres")
+    .required("Descripción es obligatorio"),
+  logo: string().required("El logo es obligatorio")
+});
+
+const stypes = computed(() => {
+  return Object.keys(services).map((item) => ({
+    code: item,
+    label: services[item]
+  }));
+});
 
 function eventSideOverlay(event) {
   if (event.which === 27) {
@@ -16,7 +34,6 @@ function eventSideOverlay(event) {
 
 onMounted(() => {
   new SimpleBar(document.getElementById("side-overlay"));
-
   document.addEventListener("keydown", eventSideOverlay);
 });
 
@@ -24,6 +41,15 @@ onMounted(() => {
 onUnmounted(() => {
   document.removeEventListener("keydown", eventSideOverlay);
 });
+
+function sendData() {
+  if (!ser.service.id) {
+    ser.create();
+  } else {
+    ser.update();
+  }
+  store.sideOverlay({ mode: "close" });
+}
 </script>
 
 <template>
@@ -38,7 +64,7 @@ onUnmounted(() => {
             <img
               class="img-avatar img-avatar32"
               src="/assets/media/images/add.png"
-              alt="Avatar"
+              alt="Icon"
             />
           </a>
           <!-- END User Avatar -->
@@ -46,7 +72,7 @@ onUnmounted(() => {
           <!-- User Info -->
           <div class="ms-2">
             <a class="text-dark fw-semibold fs-sm" href="javascript:void(0)">
-              Nuevo Servicio
+              {{ !ser.service.id ? "Crear" : "Modificar" }} Servicio
             </a>
           </div>
           <!-- END User Info -->
@@ -69,6 +95,82 @@ onUnmounted(() => {
         <div class="content-side">
           <!-- Side Overlay Tabs -->
           <BaseBlock transparent :rounded="false" class="pull-x pull-t">
+            <Form
+              class="d-flex flex-column"
+              :validation-schema="schema"
+              v-slot="{ errors }"
+              @submit="sendData"
+            >
+              <div class="mb-4">
+                <label class="form-label" for="types_i">
+                  Nombre del servicio
+                </label>
+                <Field
+                  as="select"
+                  id="types_i"
+                  name="sname"
+                  class="form-select"
+                  :class="{ 'is-invalid': errors.sname }"
+                  v-model="ser.service.name"
+                >
+                  <option value="" selected disabled hidden>Selecciona</option>
+                  <template v-for="item in stypes">
+                    <option :value="item.code">{{ item.label }}</option>
+                  </template>
+                </Field>
+                <div
+                  v-show="errors.sname"
+                  class="invalid-feedback animated fadeIn"
+                >
+                  {{ errors.sname }}
+                </div>
+              </div>
+              <div class="mb-4">
+                <label class="form-label" for="des_i"> Descripción </label>
+                <Field
+                  as="textarea"
+                  class="form-control"
+                  id="des_i"
+                  name="description"
+                  rows="4"
+                  placeholder="Ingrese una descripción breve"
+                />
+                <div
+                  v-show="errors.description"
+                  class="invalid-feedback animated fadeIn"
+                >
+                  {{ errors.description }}
+                </div>
+              </div>
+              <div class="mb-4">
+                <label class="form-label" for="logo_i">
+                  Logo
+                  <small class="text-warning" style="font-size: 0.6rem"
+                    >* Deberia ser file uploader</small
+                  >
+                </label>
+                <Field
+                  as="select"
+                  class="form-select"
+                  id="logo_i"
+                  name="logo"
+                  v-model="ser.service.logo"
+                >
+                  <option value="" selected disabled hidden>Selecciona</option>
+                  <option value="far fa-folder">{{ ser.service.name }}</option>
+                </Field>
+                <div
+                  v-show="errors.logo"
+                  class="invalid-feedback animated fadeIn"
+                >
+                  {{ errors.logo }}
+                </div>
+              </div>
+              <button type="submit" class="btn btn-lg btn-alt-primary">
+                <i class="fa fa-fw fa-crow me-1 opacity-50" />
+                Guardar
+              </button>
+            </Form>
           </BaseBlock>
           <!-- END Side Overlay Tabs -->
         </div>

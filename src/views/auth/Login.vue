@@ -102,7 +102,7 @@ async function onSubmit({ email, password }) {
             <div>
               <button type="submit" class="btn btn-lg btn-alt-primary">
                 <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50" />
-                Iniciar sesión
+                Login
               </button>
             </div>
           </div>

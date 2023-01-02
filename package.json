@@ -20,6 +20,7 @@
         "nprogress": "^0.2.0",
         "pinia": "^2.0.27",
         "simplebar": "^5.3.9",
+        "sweetalert2": "^11.6.16",
         "vee-validate": "^4.7.3",
         "vue": "^3.2.37",
         "vue-router": "^4.1.6",
