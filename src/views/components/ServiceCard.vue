@@ -32,6 +32,7 @@ export default {
             :disabled="editable"
             type="button"
             class="btn btn-sm btn-outline-primary"
+            @click="$emit('edit')"
           >
             Modificar
           </button>
@@ -39,6 +40,7 @@ export default {
             :disabled="editable"
             type="button"
             class="btn btn-sm btn-alt-danger"
+            @click="$emit('del')"
           >
             Eliminar
           </button>

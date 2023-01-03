@@ -36,4 +36,11 @@ export const createService = (payload) =>
  * @since 2.0 ¡Important!
  */
 export const updateService = (payload) =>
-  axios.put(`/api/v2/services/${payload.id}`, payload);
+  axios.put(`/api/v2/services/${payload.id}/`, payload);
+
+/**
+ * @url DELETE /api/v2/services/
+ * @since 2.0 ¡Important!
+ */
+export const destroyService = (id) =>
+  axios.delete(`/api/v2/services/${id}/`);

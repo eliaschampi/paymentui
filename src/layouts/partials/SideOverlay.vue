@@ -42,11 +42,11 @@ onUnmounted(() => {
   document.removeEventListener("keydown", eventSideOverlay);
 });
 
-function sendData() {
+async function sendData() {
   if (!ser.service.id) {
-    ser.create();
+    await ser.create();
   } else {
-    ser.update();
+    await ser.update();
   }
   store.sideOverlay({ mode: "close" });
 }
@@ -61,11 +61,7 @@ function sendData() {
         <slot name="header">
           <!-- User Avatar -->
           <a class="img-link me-1" href="javascript:void(0)">
-            <img
-              class="img-avatar img-avatar32"
-              src="/assets/media/images/add.png"
-              alt="Icon"
-            />
+            <img class="img-avatar img-avatar32" src="/assets/media/images/add.png" alt="Icon" />
           </a>
           <!-- END User Avatar -->
 
@@ -79,11 +75,7 @@ function sendData() {
         </slot>
 
         <!-- Close Side Overlay -->
-        <button
-          type="button"
-          class="ms-auto btn btn-sm btn-alt-danger"
-          @click="store.sideOverlay({ mode: 'close' })"
-        >
+        <button type="button" class="ms-auto btn btn-sm btn-alt-danger" @click="store.sideOverlay({ mode: 'close' })">
           <i class="fa fa-fw fa-times" />
         </button>
         <!-- END Close Side Overlay -->
@@ -95,74 +87,42 @@ function sendData() {
         <div class="content-side">
           <!-- Side Overlay Tabs -->
           <BaseBlock transparent :rounded="false" class="pull-x pull-t">
-            <Form
-              class="d-flex flex-column"
-              :validation-schema="schema"
-              v-slot="{ errors }"
-              @submit="sendData"
-            >
+            <Form class="d-flex flex-column" :validation-schema="schema" v-slot="{ errors }" @submit="sendData">
               <div class="mb-4">
                 <label class="form-label" for="types_i">
                   Nombre del servicio
                 </label>
-                <Field
-                  as="select"
-                  id="types_i"
-                  name="sname"
-                  class="form-select"
-                  :class="{ 'is-invalid': errors.sname }"
-                  v-model="ser.service.name"
-                >
+                <Field as="select" id="types_i" name="name" class="form-select" :class="{ 'is-invalid': errors.name }"
+                  v-model="ser.service.name">
                   <option value="" selected disabled hidden>Selecciona</option>
                   <template v-for="item in stypes">
                     <option :value="item.code">{{ item.label }}</option>
                   </template>
                 </Field>
-                <div
-                  v-show="errors.sname"
-                  class="invalid-feedback animated fadeIn"
-                >
-                  {{ errors.sname }}
+                <div v-show="errors.name" class="invalid-feedback animated fadeIn">
+                  {{ errors.name }}
                 </div>
               </div>
               <div class="mb-4">
                 <label class="form-label" for="des_i"> Descripción </label>
-                <Field
-                  as="textarea"
-                  class="form-control"
-                  id="des_i"
-                  name="description"
-                  rows="4"
-                  placeholder="Ingrese una descripción breve"
-                />
-                <div
-                  v-show="errors.description"
-                  class="invalid-feedback animated fadeIn"
-                >
+                <Field as="textarea" class="form-control" id="des_i" name="description" rows="4"
+                  placeholder="Ingrese una descripción breve" v-model="ser.service.description"/>
+                <div v-show="errors.description" class="invalid-feedback animated fadeIn">
                   {{ errors.description }}
                 </div>
               </div>
               <div class="mb-4">
                 <label class="form-label" for="logo_i">
                   Logo
-                  <small class="text-warning" style="font-size: 0.6rem"
-                    >* Deberia ser file uploader</small
-                  >
+                  <small class="text-warning" style="font-size: 0.6rem">
+                    * Deberia ser file uploader
+                  </small>
                 </label>
-                <Field
-                  as="select"
-                  class="form-select"
-                  id="logo_i"
-                  name="logo"
-                  v-model="ser.service.logo"
-                >
+                <Field as="select" class="form-select" id="logo_i" name="logo" v-model="ser.service.logo">
                   <option value="" selected disabled hidden>Selecciona</option>
                   <option value="far fa-folder">{{ ser.service.name }}</option>
                 </Field>
-                <div
-                  v-show="errors.logo"
-                  class="invalid-feedback animated fadeIn"
-                >
+                <div v-show="errors.logo" class="invalid-feedback animated fadeIn">
                   {{ errors.logo }}
                 </div>
               </div>

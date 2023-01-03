@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { fetchServices, createService, updateService } from "../api";
+import { fetchServices, createService, updateService, destroyService } from "../api";
 import { useResponse } from "../composables/useResponse";
 
 export const useServiceStore = defineStore({
@@ -42,6 +42,20 @@ export const useServiceStore = defineStore({
       } catch (error) {
         useResponse().showNotify(error);
       }
+    },
+    async destroy(item) {
+      useResponse().confirm("¿Estas seguro de eliminar el servicio?", async () => {
+        try {
+          const { data } = await destroyService(item.id);
+          this.services.splice(
+            this.services.indexOf(item),
+            1,
+          );
+          useResponse().showNotify(data, true);
+        } catch (error) {
+          useResponse().showNotify(error);
+        }
+      });
     }
   }
 });

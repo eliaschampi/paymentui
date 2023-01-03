@@ -4,30 +4,37 @@ const toast = Swal.mixin({
   buttonsStyling: false,
   target: "#page-container",
   customClass: {
-    confirmButton: "btn btn-success m-1"
+    confirmButton: "btn btn-success m-1",
+    cancelButton: "btn btn-success"
   },
-  confirmButtonText: "De acuerdo"
+  confirmButtonText: "De acuerdo",
+  cancelButtonText: 'No'
 });
 export const useResponse = () => {
-  function showAlert(payload) {
+  
+  function showAlert(payload, maybeerror = false) {
     const { status_code, message, success } = payload;
-
     if (!status_code) {
-      let first = payload[Object.keys(payload)[0]];
-      if (Array.isArray(first)) first = first[0];
+      if (maybeerror) {
+        let first = payload[Object.keys(payload)[0]];
+        if (Array.isArray(first)) first = first[0];
+        return {
+          type: "error",
+          title: "Ocurrió algo inesperado",
+          color: "alert alert-danger",
+          message: first || "Inténtelo mas tarde por favor"
+        };
+      }
       return {
-        type: "danger",
-        title: "Ocurrió algo inesperado",
-        color: "alert alert-danger",
-        message: first || "Inténtelo mas tarde por favor"
+        type: "success",
+        title: "En hora buena!",
+        message: "Operación correcta"
       };
     }
-
-    const type = rtypes[status_code];
     return {
-      type,
+      type: success ? "success" : "warning",
       title: success ? "En hora buena!" : "Ocurrió algo inesperado",
-      color: `alert alert-${type}`,
+      color: `alert alert-${rtypes[status_code]}`,
       message: message
     };
   }
@@ -37,8 +44,17 @@ export const useResponse = () => {
     toast.fire(title, message, type);
   }
 
+  async function confirm(title, callback) {
+    toast.fire({ title, icon: "question", showCancelButton: true }).then((result) => {
+      if (result.isConfirmed) {
+        callback();
+      }
+    });
+  }
+
   return {
     showAlert,
-    showNotify
+    showNotify,
+    confirm
   };
 };

@@ -1,22 +1,25 @@
 <script setup>
-import { onMounted, reactive } from "vue";
+import { onMounted, ref } from "vue";
 import { useTemplateStore } from "../stores/template";
 import { useServiceStore } from "../stores/service";
 import ServiceCard from "./components/ServiceCard.vue";
-import rtypes from "../data/response";
+import rtypes from "../data/services";
 
 const store = useTemplateStore();
 const serviceStore = useServiceStore();
-const disablebtn = reactive(false);
+const disablebtn = ref(false);
 onMounted(serviceStore.fetchAll);
 
-async function defineRname(name) {
+function defineRname(name) {
   const full = rtypes[name];
-  if (full) {
-    return full;
-  }
-  return "Servicio";
+  return full || "Servicio";
 }
+
+function showEdit(item) {
+  serviceStore.$patch({ service: item });
+  store.sideOverlay({ mode: 'toggle' });
+}
+
 </script>
 
 <template>
@@ -30,6 +33,7 @@ async function defineRname(name) {
         @click="store.sideOverlay({ mode: 'toggle' })"
         type="button"
         class="btn btn-alt-primary"
+        :disabled="disablebtn"
       >
         <i class="fa fa-plus opacity-50 me-1" />
         Nuevo Servicio
@@ -51,6 +55,8 @@ async function defineRname(name) {
           :name="defineRname(item.name)"
           :description="item.description"
           :logo="item.logo"
+          @edit="showEdit(item)"
+          @del="serviceStore.destroy(item)"
         />
       </template>
     </div>
