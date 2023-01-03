@@ -49,7 +49,7 @@ function showEdit(item) {
           {{ serviceStore.services.length }}
         </div>
       </div>
-      <template v-for="item in serviceStore.services">
+      <template v-for="item in serviceStore.services" :key="item.id">
         <ServiceCard
           :editable="disablebtn"
           :name="defineRname(item.name)"

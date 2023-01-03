@@ -1,5 +1,4 @@
 import axios from "axios";
-import cache from "../utils/cache";
 import { useAuthStore } from "../stores/auth";
 
 const api_url = import.meta.env.VITE_API_URL;
@@ -43,7 +42,8 @@ instance.interceptors.response.use(
                 errData.status_code === 401 &&
                 errData.details.code === "token_not_valid"
             ) {
-                cache.cleanAll();
+                const { logout } = useAuthStore();
+                logout();
             }
         }
         return Promise.reject(errData);

@@ -29,18 +29,25 @@ export const fetchServices = () => axios.get("/api/v2/services/");
  * @since 2.0 ¡Important!
  */
 export const createService = (payload) =>
-  axios.post("/api/v2/services/", payload);
+    axios.post("/api/v2/services/", payload);
 
 /**
  * @url PUT /api/v2/services/
  * @since 2.0 ¡Important!
  */
 export const updateService = (payload) =>
-  axios.put(`/api/v2/services/${payload.id}/`, payload);
+    axios.put(`/api/v2/services/${payload.id}/`, payload);
 
 /**
  * @url DELETE /api/v2/services/
  * @since 2.0 ¡Important!
  */
 export const destroyService = (id) =>
-  axios.delete(`/api/v2/services/${id}/`);
+    axios.delete(`/api/v2/services/${id}/`);
+
+/**
+ * @url DELETE /api/v2/payments/
+ * @since 2.0 ¡Important!
+ */
+export const fetchPayments = () =>
+    axios.get("/api/v2/payments/");

@@ -30,7 +30,7 @@ onMounted(fetchUsersData);
   <div class="content">
     <div class="content-heading">Usuarios: {{ state.users.length }}</div>
     <div class="row">
-      <template v-for="user in state.users">
+      <template v-for="user in state.users" :key="user.id">
         <UserCard
           :username="user.username"
           :email="user.email"
