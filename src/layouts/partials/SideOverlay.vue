@@ -95,7 +95,7 @@ async function sendData() {
                 <Field as="select" id="types_i" name="name" class="form-select" :class="{ 'is-invalid': errors.name }"
                   v-model="ser.service.name">
                   <option value="" selected disabled hidden>Selecciona</option>
-                  <template v-for="item in stypes">
+                  <template v-for="item in stypes" :key="item.code">
                     <option :value="item.code">{{ item.label }}</option>
                   </template>
                 </Field>

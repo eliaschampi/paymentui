@@ -1,20 +1,15 @@
 <script setup>
 import { reactive } from "vue";
 import { Form, Field } from "vee-validate";
-import { useRouter } from "vue-router";
 import { object, string } from "yup";
 import { useAuthStore } from "../../stores/auth";
 import Auth from "../components/Auth.vue";
-import { useResponse } from "../../composables/useResponse";
 
-const router = useRouter();
-const response = useResponse();
-
+const store = useAuthStore();
 // Input state variables
 const state = reactive({
   email: "",
   password: "",
-  res: {}
 });
 
 const schema = object().shape({
@@ -23,16 +18,6 @@ const schema = object().shape({
     .min(5, "La contraseña debe ser mayor a 5 caracteres")
     .required("Contraseña es requerida")
 });
-
-async function onSubmit({ email, password }) {
-  state.res = "";
-  const { login } = useAuthStore();
-  const err = await login(email, password);
-  if (err) {
-    state.res = response.showAlert(err);
-  }
-  router.push({ name: "home" });
-}
 </script>
 
 <template>
@@ -46,7 +31,7 @@ async function onSubmit({ email, password }) {
         <Form
           v-slot="{ errors }"
           :validation-schema="schema"
-          @submit="onSubmit"
+          @submit="store.login"
         >
           <div class="mb-4">
             <label class="form-label" for="fi-uname">Correo</label>
@@ -83,12 +68,12 @@ async function onSubmit({ email, password }) {
             </div>
           </div>
           <div
-            v-show="state.res.color"
+            v-show="store.msg.color"
             class="alert-dismissible"
-            :class="state.res.color"
+            :class="store.msg.color"
             role="alert"
           >
-            {{ state.res.message }}
+            {{ store.msg.message }}
           </div>
           <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
