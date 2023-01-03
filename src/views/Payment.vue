@@ -117,6 +117,31 @@ onMounted(() => {
                     {{ errors.service_id }}
                   </div>
                 </div>
+                <div class="mb-4">
+                  <label class="form-label" for="user_i"> Usuario </label>
+                  <Field
+                    as="select"
+                    class="form-select"
+                    id="user_i"
+                    name="user_id"
+                    v-model="pay.user_id"
+                  >
+                    <option value="" selected disabled hidden>
+                      Selecciona
+                    </option>
+                    <template v-for="item in users" :key="item.id">
+                      <option :value="item.id">
+                        {{ item.username }}
+                      </option>
+                    </template>
+                  </Field>
+                  <div
+                    v-show="errors.user_id"
+                    class="invalid-feedback animated fadeIn"
+                  >
+                    {{ errors.user_id }}
+                  </div>
+                </div>
               </Form>
             </div>
             <div class="block-content block-content-full text-end bg-body">
@@ -198,48 +223,57 @@ onMounted(() => {
               <th class="d-none d-sm-table-cell text-center">Usuario</th>
               <th>Monto</th>
               <th class="d-none d-sm-table-cell text-end">Fecha de pago</th>
-
-              <th class="text-center">Action</th>
+              <th class="d-none d-sm-table-cell text-end">Fecha de Exp.</th>
+              <th class="d-none d-sm-table-cell text-end">Estado.</th>
+              <th class="text-center">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="text-center fs-sm">
-                <a class="fw-semibold" href="be_pages_ecom_product_edit.html">
-                  <strong>PID.01535</strong>
-                </a>
-              </td>
-              <td class="d-none d-md-table-cell fs-sm">
-                <a href="be_pages_ecom_product_edit.html">Product #35</a>
-              </td>
-              <td class="d-none d-sm-table-cell text-center fs-sm">
-                03/04/2019
-              </td>
-              <td>
-                <span class="badge bg-danger">Out of Stock</span>
-              </td>
-              <td class="text-end d-none d-sm-table-cell fs-sm">
-                <strong>$37,00</strong>
-              </td>
-              <td class="text-center fs-sm">
-                <a
-                  class="btn btn-sm btn-alt-secondary"
-                  href="be_pages_ecom_product_edit.html"
-                  data-bs-toggle="tooltip"
-                  title="View"
-                >
-                  <i class="fa fa-fw fa-eye"></i>
-                </a>
-                <a
-                  class="btn btn-sm btn-alt-danger"
-                  href="javascript:void(0)"
-                  data-bs-toggle="tooltip"
-                  title="Delete"
-                >
-                  <i class="fa fa-fw fa-times text-danger"></i>
-                </a>
-              </td>
-            </tr>
+            <template v-for="item in payments" :key="item.id">
+              <tr>
+                <td class="text-center fs-sm">
+                  <span class="fw-semibold text-info">
+                    <strong>{{ item.id }}</strong>
+                  </span>
+                </td>
+                <td class="d-none d-md-table-cell fs-sm">
+                  <span class="text-primary">{{ item.service_id }}</span>
+                </td>
+                <td class="d-none d-sm-table-cell text-center fs-sm">
+                  {{ item.user_id }}
+                </td>
+                <td class="text-end d-none d-sm-table-cell fs-sm">
+                  <strong>{{ item.amount }}</strong>
+                </td>
+                <td class="text-end d-none d-sm-table-cell fs-sm">
+                  <strong>{{ item.payment_date }}</strong>
+                </td>
+                <td class="text-end d-none d-sm-table-cell fs-sm">
+                  <strong>{{ item.expiration_date }}</strong>
+                </td>
+                <td>
+                  <span class="badge bg-warning">Pendiente</span>
+                </td>
+                <td class="text-center fs-sm">
+                  <a
+                    class="btn btn-sm btn-alt-secondary"
+                    href="javascript:void(0)"
+                    data-bs-toggle="tooltip"
+                    title="View"
+                  >
+                    <i class="fa fa-fw fa-eye"></i>
+                  </a>
+                  <a
+                    class="btn btn-sm btn-alt-danger"
+                    href="javascript:void(0)"
+                    data-bs-toggle="tooltip"
+                    title="Delete"
+                  >
+                    <i class="fa fa-fw fa-times text-danger"></i>
+                  </a>
+                </td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
