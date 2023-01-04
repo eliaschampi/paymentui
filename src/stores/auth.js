@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import cache from "../utils/cache";
 import { sigin } from "../api";
-import  { useResponse } from "../composables/useResponse"
+import { useResponse } from "../composables/useResponse"
 
 export const useAuthStore = defineStore({
   id: "auth",
