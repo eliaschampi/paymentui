@@ -1,24 +1,24 @@
 export default {
   main: [
     {
-      name: "Dashboard",
+      name: "Servicios",
       to: "home",
-      icon: "si si-speedometer"
+      icon: "si si-home"
     },
     {
       name: "Usuarios",
       to: "user",
-      icon: "si si-speedometer"
+      icon: "si si-user"
     },
     {
-        name: "Pagos",
-        to: "payment",
-        icon: "si si-speedometer"
+      name: "Pagos",
+      to: "payment",
+      icon: "fa fa-carrot"
     },
     {
-        name: "Pagos expirados",
-        to: "expired",
-        icon: "si si-speedometer"
+      name: "Pagos expirados",
+      to: "expired",
+      icon: "fa fa-business-time"
     },
   ]
 };

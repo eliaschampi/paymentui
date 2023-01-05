@@ -1,15 +1,16 @@
 <script setup>
 import { onMounted, reactive } from "vue";
 import { useTemplateStore } from "../stores/template";
-import { fetchPayments, fetchUsers, createPayment } from "../api";
+import { fetchPayments, fetchUsers, createPayment, updatePayment, deletePayment } from "../api";
 import { storeToRefs } from "pinia";
 import { useResponse } from "../composables/useResponse";
 import { Form, Field } from "vee-validate";
 import { useServiceStore } from "../stores/service";
 import { object, date as vdate, number as vnumber, string as vstring } from "yup";
 
+
 const { sideOverlay } = useTemplateStore();
-const { showNotify } = useResponse();
+const { showNotify, confirm } = useResponse();
 const { fetchAll } = useServiceStore();
 const { services } = storeToRefs(useServiceStore());
 
@@ -17,14 +18,7 @@ const state = reactive({
   users: [],
   payments: [],
   disablebtn: false,
-  pay: {
-    id: "",
-    user_id: "",
-    service_id: "",
-    amount: 0,
-    payment_date: "",
-    expiration_date: "",
-  }
+  pay: {}
 })
 
 
@@ -46,21 +40,48 @@ async function fetchData() {
   }
 }
 
+function toggleModal() {
+  const element = document.getElementById("paymod_i");
+  let modal = bootstrap.Modal.getInstance(element);
+  if (!modal) {
+    modal = new bootstrap.Modal(element);
+  }
+  modal.toggle();
+}
+
 async function save(payload) {
+  const upsert = (payload) => {
+    if (payload.id) {
+      return updatePayment(payload)
+    }
+    return createPayment(payload);
+  }
   try {
-    const { data } = await createPayment(payload);
-    state.payments.push(data.data);
+    const { data } = await upsert(payload);
+    fetchData();
+    toggleModal();
     showNotify(data);
-    (new window.bootstrap.Modal("#paymod_i")).hide();
   } catch (error) {
     showNotify(error);
   }
 }
 
-onMounted(async () => {
-  await fetchUsersApi();
-  await fetchData();
-});
+function edit(payload) {
+  state.pay = payload;
+  toggleModal();
+}
+
+function del(payload) {
+  confirm("¿Estas seguro de eliminar este pago?", async () => {
+    try {
+      const { data } = await deletePayment(payload.id);
+      state.payments.splice(state.payments.indexOf(payload), 1);
+      showNotify(data);
+    } catch (error) {
+      showNotify(error);
+    }
+  })
+}
 
 const schema = object().shape({
   user_id: vstring().required("Usuario es obligatorio"),
@@ -69,6 +90,30 @@ const schema = object().shape({
   payment_date: vdate().required("Fecha de pago es obligatorio"),
   expiration_date: vdate().required("Fecha de expiracion es obligatorio")
 });
+
+
+function userById(user_id) {
+  const user = state.users.find(item => item.id === user_id);
+  if (user) {
+    return user.username;
+  }
+  return "Usuario"
+}
+
+function serviceById(service_id) {
+  const service = services.value.find(item => item.id === service_id);
+  if (service) {
+    return service.name;
+  }
+  return "Servicio"
+}
+
+
+onMounted(async () => {
+  await fetchUsersApi();
+  await fetchData();
+});
+
 
 fetchAll();
 
@@ -171,8 +216,7 @@ fetchAll();
   <div class="content">
     <div class="row">
       <div class="col-6 col-lg-3">
-        <a class="block block-rounded block-link-shadow text-center" href="javascript:void(0)" data-bs-toggle="modal"
-          data-bs-target="#paymod_i">
+        <a class="block block-rounded block-link-shadow text-center" href="javascript:void(0)" @click="edit({})">
           <div class="block-content block-content-full">
             <div class="fs-2 fw-semibold text-success">
               <i class="fa fa-plus"></i>
@@ -183,12 +227,48 @@ fetchAll();
           </div>
         </a>
       </div>
+      <div class="col-6 col-lg-3">
+        <a class="block block-rounded block-link-shadow text-center" href="javascript:void(0)">
+          <div class="block-content block-content-full">
+            <div class="fs-2 fw-semibold text-warning">{{ state.payments.length }}</div>
+          </div>
+          <div class="block-content py-2 bg-body-light">
+            <p class="fw-medium fs-sm text-warning mb-0">
+              Expirados
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <a class="block block-rounded block-link-shadow text-center" href="javascript:void(0)">
+          <div class="block-content block-content-full">
+            <div class="fs-2 fw-semibold text-info">0</div>
+          </div>
+          <div class="block-content py-2 bg-body-light">
+            <p class="fw-medium fs-sm text-info mb-0">
+              Pendientes
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <a class="block block-rounded block-link-shadow text-center" href="javascript:void(0)">
+          <div class="block-content block-content-full">
+            <div class="fs-2 fw-semibold text-dark">{{ state.payments.length }}</div>
+          </div>
+          <div class="block-content py-2 bg-body-light">
+            <p class="fw-medium fs-sm text-muted mb-0">
+              Todos los pagos
+            </p>
+          </div>
+        </a>
+      </div>
     </div>
     <BaseBlock title="Todos los pagos">
       <div class="mb-4">
         <div class="input-group">
           <input type="text" class="form-control form-control-alt" id="one-ecom-products-search"
-            name="one-ecom-products-search" placeholder="Buscar todos los pagos.." />
+            name="one-ecom-products-search" placeholder="Buscar por usuario o servicio" />
           <span class="input-group-text bg-body border-0">
             <i class="fa fa-search"></i>
           </span>
@@ -217,10 +297,10 @@ fetchAll();
                   </span>
                 </td>
                 <td class="d-none d-md-table-cell fs-sm">
-                  <span class="text-primary">{{ item.service_id }}</span>
+                  <span class="text-primary"> {{ serviceById(item.service_id) }}</span>
                 </td>
                 <td class="d-none d-sm-table-cell text-center fs-sm">
-                  {{ item.user_id }}
+                  {{ userById(item.user_id) }}
                 </td>
                 <td class="text-end d-none d-sm-table-cell fs-sm">
                   <strong>{{ item.amount }}</strong>
@@ -236,11 +316,11 @@ fetchAll();
                 </td>
                 <td class="text-center fs-sm">
                   <a class="btn btn-sm btn-alt-secondary" href="javascript:void(0)" data-bs-toggle="tooltip"
-                    title="View">
+                    title="Modificar" @click="edit(item)">
                     <i class="fa fa-fw fa-eye"></i>
                   </a>
                   <a class="btn btn-sm btn-alt-danger" href="javascript:void(0)" data-bs-toggle="tooltip"
-                    title="Delete">
+                    title="Eliminar" @click="del(item)">
                     <i class="fa fa-fw fa-times text-danger"></i>
                   </a>
                 </td>

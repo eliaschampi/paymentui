@@ -23,18 +23,10 @@ function showEdit(item) {
 </script>
 
 <template>
-  <BasePageHeading
-    title="Sistema de pagos"
-    subtitle="Bienvenido querido usuario!"
-  >
+  <BasePageHeading title="Sistema de pagos" subtitle="Bienvenido querido usuario!">
     <template #extra>
-      <button
-        v-click-ripple
-        @click="store.sideOverlay({ mode: 'toggle' })"
-        type="button"
-        class="btn btn-alt-primary"
-        :disabled="disablebtn"
-      >
+      <button v-click-ripple @click="store.sideOverlay({ mode: 'toggle' })" type="button" class="btn btn-alt-primary"
+        :disabled="disablebtn">
         <i class="fa fa-plus opacity-50 me-1" />
         Nuevo Servicio
       </button>
@@ -50,14 +42,8 @@ function showEdit(item) {
         </div>
       </div>
       <template v-for="item in serviceStore.services" :key="item.id">
-        <ServiceCard
-          :editable="disablebtn"
-          :name="defineRname(item.name)"
-          :description="item.description"
-          :logo="item.logo"
-          @edit="showEdit(item)"
-          @del="serviceStore.destroy(item)"
-        />
+        <ServiceCard :editable="disablebtn" :name="defineRname(item.name)" :description="item.description"
+          :logo="item.logo" @edit="showEdit(item)" @del="serviceStore.destroy(item)" />
       </template>
     </div>
   </div>

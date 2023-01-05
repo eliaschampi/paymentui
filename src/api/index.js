@@ -58,3 +58,17 @@ export const fetchPayments = () =>
  */
 export const createPayment = (payload) =>
     axios.post("/api/v2/payments/", payload);
+
+/**
+ * @url PUT /api/v2/payments/
+ * @since 2.0 ¡Important!
+ */
+export const updatePayment = (payload) =>
+    axios.put(`/api/v2/payments/${payload.id}`, payload);
+
+/**
+ * @url delete /api/v2/payments/
+ * @since 2.0 ¡Important!
+ */
+export const deletePayment = (id) =>
+    axios.delete(`/api/v2/payments/${id}`);

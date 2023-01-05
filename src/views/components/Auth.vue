@@ -22,15 +22,10 @@ export default {
   <BaseBackground image="/assets/media/images/bg.png">
     <div class="row g-0 bg-primary-dark-op">
       <!-- Meta Info Section -->
-      <div
-        class="hero-static col-lg-4 d-none d-lg-flex flex-column justify-content-center"
-      >
+      <div class="hero-static col-lg-4 d-none d-lg-flex flex-column justify-content-center">
         <div class="p-4 p-xl-5 flex-grow-1 d-flex align-items-center">
           <div class="w-100">
-            <RouterLink
-              :to="{ name: 'home' }"
-              class="link-fx fw-semibold fs-2 text-white"
-            >
+            <RouterLink :to="{ name: 'home' }" class="link-fx fw-semibold fs-2 text-white">
               {{ app_d.name }}
               <span class="fw-normal">{{ app_d.version }}</span>
             </RouterLink>
@@ -39,9 +34,7 @@ export default {
             </p>
           </div>
         </div>
-        <div
-          class="p-4 p-xl-5 d-xl-flex justify-content-between align-items-center fs-sm"
-        >
+        <div class="p-4 p-xl-5 d-xl-flex justify-content-between align-items-center fs-sm">
           <p class="fw-medium text-white-50 mb-0">
             <strong>{{ app_d.name + " " + app_d.version }}</strong>
             &copy; {{ app_d.copyright }}
@@ -54,14 +47,9 @@ export default {
       <!-- END Meta Info Section -->
 
       <!-- Main Section -->
-      <div
-        class="hero-static col-lg-8 d-flex flex-column align-items-center bg-body-extra-light"
-      >
+      <div class="hero-static col-lg-8 d-flex flex-column align-items-center bg-body-extra-light">
         <div class="p-3 w-100 d-lg-none text-center">
-          <RouterLink
-            :to="{ name: 'home' }"
-            class="link-fx fw-semibold fs-3 text-dark"
-          >
+          <RouterLink :to="{ name: 'home' }" class="link-fx fw-semibold fs-3 text-dark">
             {{ app_d.name }} <span class="fw-normal">{{ app_d.version }}</span>
           </RouterLink>
         </div>
@@ -87,8 +75,7 @@ export default {
           </div>
         </div>
         <div
-          class="px-4 py-3 w-100 d-lg-none d-flex flex-column flex-sm-row justify-content-between fs-sm text-center text-sm-start"
-        >
+          class="px-4 py-3 w-100 d-lg-none d-flex flex-column flex-sm-row justify-content-between fs-sm text-center text-sm-start">
           <p class="fw-medium text-black-50 py-2 mb-0">
             <strong>{{ app_d.name + " " + app_d.version }}</strong>
             &copy; {{ app_d.copyright }}

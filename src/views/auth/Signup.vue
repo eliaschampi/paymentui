@@ -45,28 +45,15 @@ async function onSubmit(userdata) {
 
 <template>
   <!-- Page Content -->
-  <Auth
-    title="Registrarme"
-    description="¡Gracias por unirte a este gran sistema!"
-  >
+  <Auth title="Registrarme" description="¡Gracias por unirte a este gran sistema!">
     <div class="row g-0 justify-content-center">
       <div class="col-sm-8 col-xl-4">
-        <Form
-          v-slot="{ errors }"
-          :validation-schema="schema"
-          @submit="onSubmit"
-        >
+        <Form v-slot="{ errors }" :validation-schema="schema" @submit="onSubmit">
           <div class="mb-4">
             <label class="form-label" for="fi-uname"> Correo </label>
-            <Field
-              id="fi-uname"
-              v-model="state.email"
-              name="email"
-              type="email"
-              class="form-control form-control-lg form-control-alt py-3"
-              :class="{ 'is-invalid': errors.email }"
-              placeholder="Por ejemplo admin@aeduca.com"
-            />
+            <Field id="fi-uname" v-model="state.email" name="email" type="email"
+              class="form-control form-control-lg form-control-alt py-3" :class="{ 'is-invalid': errors.email }"
+              placeholder="Por ejemplo admin@aeduca.com" />
 
             <div v-show="errors.email" class="invalid-feedback animated fadeIn">
               {{ errors.email }}
@@ -74,55 +61,29 @@ async function onSubmit(userdata) {
           </div>
           <div class="mb-4">
             <label class="form-label" for="fi-password">Contraseña</label>
-            <Field
-              id="fi-password"
-              v-model="state.password"
-              name="password"
-              type="password"
-              class="form-control form-control-lg form-control-alt py-3"
-              :class="{ 'is-invalid': errors.password }"
-              placeholder="********"
-            />
-            <div
-              v-show="errors.password"
-              class="invalid-feedback animated fadeIn"
-            >
+            <Field id="fi-password" v-model="state.password" name="password" type="password"
+              class="form-control form-control-lg form-control-alt py-3" :class="{ 'is-invalid': errors.password }"
+              placeholder="********" />
+            <div v-show="errors.password" class="invalid-feedback animated fadeIn">
               {{ errors.password }}
             </div>
           </div>
           <div class="mb-4">
             <label class="form-label" for="fi-user">Nombre de usuario</label>
-            <Field
-              id="fi-user"
-              v-model="state.username"
-              name="username"
-              type="text"
-              class="form-control form-control-lg form-control-alt py-3"
-              :class="{ 'is-invalid': errors.username }"
-              placeholder="por ejemplo panda"
-            />
+            <Field id="fi-user" v-model="state.username" name="username" type="text"
+              class="form-control form-control-lg form-control-alt py-3" :class="{ 'is-invalid': errors.username }"
+              placeholder="por ejemplo panda" />
 
-            <div
-              v-show="errors.username"
-              class="invalid-feedback animated fadeIn"
-            >
+            <div v-show="errors.username" class="invalid-feedback animated fadeIn">
               {{ errors.username }}
             </div>
           </div>
-          <div
-            v-show="state.res.color"
-            class="alert-dismissible"
-            :class="state.res.color"
-            role="alert"
-          >
+          <div v-show="state.res.color" class="alert-dismissible" :class="state.res.color" role="alert">
             {{ state.res.message }}
           </div>
           <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-              <RouterLink
-                :to="{ name: 'login' }"
-                class="btn btn-lg btn-alt-primary"
-              >
+              <RouterLink :to="{ name: 'login' }" class="btn btn-lg btn-alt-primary">
                 Volver
               </RouterLink>
             </div>
