@@ -1,6 +1,7 @@
 node_modules
 .dist
 .idea
+.fleet
 .vscode
 .env
 package-lock.json

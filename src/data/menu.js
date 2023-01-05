@@ -1,20 +1,24 @@
-/*
- * Main and demo navigation arrays
- *
- * 'to' attribute points to the route name, not the path url
- */
-
 export default {
   main: [
     {
-      name: "Dashboard",
+      name: "Servicios",
       to: "home",
-      icon: "si si-speedometer"
+      icon: "si si-home"
     },
     {
       name: "Usuarios",
       to: "user",
-      icon: "si si-speedometer"
-    }
+      icon: "si si-user"
+    },
+    {
+      name: "Pagos",
+      to: "payment",
+      icon: "fa fa-carrot"
+    },
+    {
+      name: "Pagos expirados",
+      to: "expired",
+      icon: "fa fa-business-time"
+    },
   ]
 };

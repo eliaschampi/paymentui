@@ -9,7 +9,13 @@ import { useAuthStore } from "../stores/auth";
 //Auth layout
 const AuthLogin = () => import("@/views/auth/Login.vue");
 const AuthSignup = () => import("@/views/auth/Signup.vue");
+
 const BackendUser = () => import("@/views/User.vue");
+const BackendPayment = () => import("@/views/Payment.vue");
+const BackendExpired = () => import("@/views/Expired.vue");
+
+const NotFound = () => import("@/views/error/NotFound.vue");
+const NotAllowed = () => import("@/views/error/NotAllowed.vue");
 
 // Backend: Dashboard
 const Dashboard = () => import("@/views/Home.vue");
@@ -30,6 +36,16 @@ const routes = [
         path: "user",
         name: "user",
         component: BackendUser
+      },
+      {
+        path: "payment",
+        name: "payment",
+        component: BackendPayment
+      },
+      {
+        path: "expired",
+        name: "expired",
+        component: BackendExpired
       }
     ]
   },
@@ -47,6 +63,22 @@ const routes = [
         name: "signup",
         component: AuthSignup
       }
+    ]
+  },
+  {
+    path: "/",
+    component: LayoutSimple,
+    children: [
+      {
+        path: "notallowed",
+        name: "notallowed",
+        component: NotAllowed
+      },
+      {
+        path: ":pathMatch(.*)*",
+        name: "not_found",
+        component: NotFound
+      },
     ]
   }
 ];

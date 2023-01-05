@@ -1,17 +1,9 @@
 <script setup>
 import { useTemplateStore } from "@/stores/template";
-import { useAuthStore } from "../../stores/auth";
-import { useRouter } from "vue-router";
-const router = useRouter();
-// Main store and Router
+import {useAuthStore} from "../../stores/auth";
+
 const store = useTemplateStore();
-
 const { getEsential, logout } = useAuthStore();
-
-async function logoutUser() {
-  await logout();
-  window.location.reload();
-}
 </script>
 
 <template>
@@ -114,7 +106,7 @@ async function logoutUser() {
                   <div class="p-2">
                     <button
                       class="dropdown-item d-flex align-items-center justify-content-between"
-                      @click="logoutUser"
+                      @click="logout"
                     >
                       <span class="fs-sm fw-medium">Cerrar sesión</span>
                     </button>

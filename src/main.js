@@ -1,7 +1,6 @@
-import { createApp } from "vue";
+import {createApp, markRaw } from "vue";
 import { createPinia } from "pinia";
 import App from "./App.vue";
-
 import router from "./router";
 
 import BaseBlock from "@/components/BaseBlock.vue";
@@ -25,9 +24,10 @@ app.component("BasePageHeading", BasePageHeading);
 
 // Register global directives
 app.directive("click-ripple", clickRipple);
-
+const pinia = createPinia();
+pinia.use(({ store }) => { store.router = markRaw(router) });
 // Use Pinia and Vue Router
-app.use(createPinia());
+app.use(pinia);
 app.use(router);
 
 // ..and finally mount it!
