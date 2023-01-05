@@ -22,28 +22,15 @@ const schema = object().shape({
 
 <template>
   <!-- Page Content -->
-  <Auth
-    title="Iniciar Sesion"
-    description="Ingrese sus credenciales para acceder"
-  >
+  <Auth title="Iniciar Sesion" description="Ingrese sus credenciales para acceder">
     <div class="row g-0 justify-content-center">
       <div class="col-sm-8 col-xl-4">
-        <Form
-          v-slot="{ errors }"
-          :validation-schema="schema"
-          @submit="store.login"
-        >
+        <Form v-slot="{ errors }" :validation-schema="schema" @submit="store.login">
           <div class="mb-4">
             <label class="form-label" for="fi-uname">Correo</label>
-            <Field
-              id="fi-uname"
-              v-model="state.email"
-              name="email"
-              type="email"
-              class="form-control form-control-lg form-control-alt py-3"
-              :class="{ 'is-invalid': errors.email }"
-              placeholder="Por ejemplo admin@aeduca.com"
-            />
+            <Field id="fi-uname" v-model="state.email" name="email" type="email"
+              class="form-control form-control-lg form-control-alt py-3" :class="{ 'is-invalid': errors.email }"
+              placeholder="Por ejemplo admin@aeduca.com" />
 
             <div v-show="errors.email" class="invalid-feedback animated fadeIn">
               {{ errors.email }}
@@ -51,36 +38,19 @@ const schema = object().shape({
           </div>
           <div class="mb-4">
             <label class="form-label" for="fi-uname">Contraseña</label>
-            <Field
-              id="fi-uname"
-              v-model="state.password"
-              name="password"
-              type="password"
-              class="form-control form-control-lg form-control-alt py-3"
-              :class="{ 'is-invalid': errors.password }"
-              placeholder="********"
-            />
-            <div
-              v-show="errors.password"
-              class="invalid-feedback animated fadeIn"
-            >
+            <Field id="fi-uname" v-model="state.password" name="password" type="password"
+              class="form-control form-control-lg form-control-alt py-3" :class="{ 'is-invalid': errors.password }"
+              placeholder="********" />
+            <div v-show="errors.password" class="invalid-feedback animated fadeIn">
               {{ errors.password }}
             </div>
           </div>
-          <div
-            v-show="store.msg.color"
-            class="alert-dismissible"
-            :class="store.msg.color"
-            role="alert"
-          >
+          <div v-show="store.msg.color" class="alert-dismissible" :class="store.msg.color" role="alert">
             {{ store.msg.message }}
           </div>
           <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-              <RouterLink
-                :to="{ name: 'signup' }"
-                class="btn btn-lg btn-alt-success"
-              >
+              <RouterLink :to="{ name: 'signup' }" class="btn btn-lg btn-alt-success">
                 Registrarme
               </RouterLink>
             </div>

@@ -51,3 +51,10 @@ export const destroyService = (id) =>
  */
 export const fetchPayments = () =>
     axios.get("/api/v2/payments/");
+
+/**
+ * @url POST /api/v2/payments/
+ * @since 2.0 ¡Important!
+ */
+export const createPayment = (payload) =>
+    axios.post("/api/v2/payments/", payload);

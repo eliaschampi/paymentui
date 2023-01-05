@@ -1,12 +1,12 @@
 <script setup>
 import { onMounted, reactive } from "vue";
 import { useTemplateStore } from "../stores/template";
-import { fetchPayments, fetchUsers } from "../api";
+import { fetchPayments, fetchUsers, createPayment } from "../api";
 import { storeToRefs } from "pinia";
 import { useResponse } from "../composables/useResponse";
 import { Form, Field } from "vee-validate";
 import { useServiceStore } from "../stores/service";
-import { object, date, number } from "yup";
+import { object, date as vdate, number as vnumber, string as vstring } from "yup";
 
 const { sideOverlay } = useTemplateStore();
 const { showNotify } = useResponse();
@@ -46,8 +46,15 @@ async function fetchData() {
   }
 }
 
-function save(payload) {
-  console.log(payload);
+async function save(payload) {
+  try {
+    const { data } = await createPayment(payload);
+    state.payments.push(data.data);
+    showNotify(data);
+    (new window.bootstrap.Modal("#paymod_i")).hide();
+  } catch (error) {
+    showNotify(error);
+  }
 }
 
 onMounted(async () => {
@@ -56,18 +63,15 @@ onMounted(async () => {
 });
 
 const schema = object().shape({
-  user_id: number().required("Usuario es obligatorio"),
-  service_id: number().required("Servicio es obligatorio")
+  user_id: vstring().required("Usuario es obligatorio"),
+  service_id: vstring().required("Servicio es obligatorio"),
+  amount: vnumber().required("Monto es obligatorio"),
+  payment_date: vdate().required("Fecha de pago es obligatorio"),
+  expiration_date: vdate().required("Fecha de expiracion es obligatorio")
 });
 
-/* 
-  amount: number().required("Monto es obligatorio"),
-  payment_date: date().required("Fecha de pago es obligatorio"),
-  expiration_date: date().required("Fecha de pago es obligatorio"),
-
-*/
-
 fetchAll();
+
 </script>
 <template>
   <div class="modal fade" id="paymod_i" tabindex="-1" role="dialog" aria-labelledby="paymod_i" aria-hidden="true">
@@ -80,12 +84,12 @@ fetchAll();
             </button>
           </template>
           <template #content>
-            <Form  :validation-schema="schema" v-slot="{ errors }" @submit="save">
+            <Form :validation-schema="schema" v-slot="{ errors }" @submit="save">
               <div class="block-content fs-sm">
                 <div class="mb-4">
                   <label class="form-label" for="service_i"> Servicio </label>
-                  <Field as="select" class="form-select" id="service_i" name="service_id"
-                    v-model="state.pay.service_id">
+                  <Field as="select" class="form-select" id="service_i" name="service_id" v-model="state.pay.service_id"
+                    :class="{ 'is-invalid': errors.service_id }">
                     <option value="" selected disabled hidden>
                       Selecciona
                     </option>
@@ -101,7 +105,8 @@ fetchAll();
                 </div>
                 <div class="mb-4">
                   <label class="form-label" for="user_i"> Usuario </label>
-                  <Field as="select" class="form-select" id="user_i" name="user_id" v-model="state.pay.user_id">
+                  <Field as="select" class="form-select" :class="{ 'is-invalid': errors.user_id }" id="user_i"
+                    name="user_id" v-model="state.pay.user_id">
                     <option value="" selected disabled hidden>
                       Selecciona
                     </option>
@@ -113,6 +118,30 @@ fetchAll();
                   </Field>
                   <div v-show="errors.user_id" class="invalid-feedback animated fadeIn">
                     {{ errors.user_id }}
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <label class="form-label" for="amount"> Monto </label>
+                  <Field type="number" id="amount_i" class="form-control form-control-alt" name="amount"
+                    v-model="state.pay.amount" :class="{ 'is-invalid': errors.amount }" />
+                  <div v-show="errors.amount" class="invalid-feedback animated fadeIn">
+                    {{ errors.amount }}
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <label class="form-label" for="payment_date"> Fecha de pago </label>
+                  <Field type="date" id="payment_date_i" class="form-control form-control-alt" name="payment_date"
+                    v-model="state.pay.payment_date" :class="{ 'is-invalid': errors.payment_date }" />
+                  <div v-show="errors.payment_date" class="invalid-feedback animated fadeIn">
+                    {{ errors.payment_date }}
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <label class="form-label" for="expiration_date"> Fecha de expiracion </label>
+                  <Field type="date" id="expiration_date_i" class="form-control form-control-alt" name="expiration_date"
+                    v-model="state.pay.expiration_date" :class="{ 'is-invalid': errors.expiration_date }" />
+                  <div v-show="errors.expiration_date" class="invalid-feedback animated fadeIn">
+                    {{ errors.expiration_date }}
                   </div>
                 </div>
               </div>
